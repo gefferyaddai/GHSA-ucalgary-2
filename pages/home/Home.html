@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home — GHSA UCalgary</title>
+    <link rel="stylesheet" href="./NavBar.css">
+    <link rel="stylesheet" href="CSS/Home.css">
+    <link rel="stylesheet" href="./footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<!-- ── NAV ────────────────────────────────────────── -->
+<nav class="nav" id="mainNav">
+    <div class="wrap nav-inner">
+        <div class="brand">
+            <img src="./assets/oax-tech-logo.png" alt="GHSA Logo" />
+            <span>GHSA</span>
+        </div>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+
+        <div class="nav-links" id="navLinks">
+            <a href="../home/Home.html" class="active">Home</a>
+            <a href="../aboutUs/AboutUs.html">About Us</a>
+            <a href="../events/Events.html">Events</a>
+            <a href="../MTT/MTT.html">Meet Us</a>
+            <a href="../whyjoin/WhyJoin.html">Why Join</a>
+            <a href="../BecomeSponsor/BecomeSponser.html">Sponsor</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ── HERO ───────────────────────────────────────── -->
+<section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+        <source src="./assets/ghana-bg.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <p class="hero-eyebrow">UCalgary Division</p>
+        <h1>Ghana Students<br>Association</h1>
+        <h3>Building Community · Celebrating Culture</h3>
+    </div>
+
+    <div class="hero-scroll">
+        <div class="hero-scroll-line"></div>
+        <span>Scroll</span>
+    </div>
+</section>
+
+<!-- ── WHAT WE OFFER ──────────────────────────────── -->
+<section class="wwo-section">
+    <div class="wwo-container">
+        <p class="section-label">What We Offer</p>
+        <h2 class="section-title">Everything you need<br>to thrive on campus</h2>
+
+        <div class="wwo-cards">
+            <div class="wwo-card">
+                <div class="wwo-card-icon">
+                    <img src="./assets/community-icon.png" alt="Community icon">
+                </div>
+                <h3>Diversity &amp; Community</h3>
+                <p>
+                    We create a welcoming space for Ghanaian students to connect,
+                    build friendships, and feel part of a strong campus community.
+                </p>
+            </div>
+
+            <div class="wwo-card">
+                <div class="wwo-card-icon">
+                    <img src="./assets/academic-icon.png" alt="Academic icon">
+                </div>
+                <h3>Academic Excellence</h3>
+                <p>
+                    We support students through shared resources, peer encouragement,
+                    and opportunities that promote academic growth and success.
+                </p>
+            </div>
+
+            <div class="wwo-card">
+                <div class="wwo-card-icon">
+                    <img src="./assets/growth-icon.png" alt="Growth icon">
+                </div>
+                <h3>Professional Development</h3>
+                <p>
+                    We help members grow through networking, leadership opportunities,
+                    workshops, and experiences that prepare them for the future.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── SPONSORS ───────────────────────────────────── -->
+<section class="sponsors-section">
+    <div class="sponsors-container">
+        <div class="sponsors-top">
+            <div class="sponsors-top-left">
+                <p class="section-label">Our Sponsors</p>
+                <h2 class="section-title">Backed by the<br>community</h2>
+                <p>
+                    GHSA is proudly supported by members of the Ghanaian community,
+                    local businesses, and organizations that believe in uplifting students,
+                    celebrating culture, and creating opportunities for growth at UCalgary.
+                </p>
+            </div>
+
+            <div class="sponsor-buttons">
+                <a href="../BecomeSponsor/BecomeSponser.html" class="sponsor-btn individual-btn">
+                    Sponsor as an Individual
+                </a>
+                <a href="../BecomeSponsor/BecomeSponser.html" class="sponsor-btn business-btn">
+                    Sponsor as a Business
+                </a>
+            </div>
+        </div>
+
+        <div class="sponsor-carousel">
+            <div class="sponsor-track">
+                <div class="sponsor-logo-card"><img src="./assets/sponsor1.png" alt="Sponsor 1"></div>
+                <div class="sponsor-logo-card"><img src="./assets/sponsor2.png" alt="Sponsor 2"></div>
+                <div class="sponsor-logo-card"><img src="./assets/sponsor3.png" alt="Sponsor 3"></div>
+                <div class="sponsor-logo-card"><img src="./assets/sponsor4.png" alt="Sponsor 4"></div>
+                <div class="sponsor-logo-card"><img src="./assets/sponsor5.png" alt="Sponsor 5"></div>
+                <!-- duplicates for seamless loop -->
+                <div class="sponsor-logo-card"><img src="./assets/sponsor1.png" alt="Sponsor 1"></div>
+                <div class="sponsor-logo-card"><img src="./assets/sponsor2.png" alt="Sponsor 2"></div>
+                <div class="sponsor-logo-card"><img src="./assets/sponsor3.png" alt="Sponsor 3"></div>
+                <div class="sponsor-logo-card"><img src="./assets/sponsor4.png" alt="Sponsor 4"></div>
+                <div class="sponsor-logo-card"><img src="./assets/sponsor5.png" alt="Sponsor 5"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── NEWSLETTER ─────────────────────────────────── -->
+<section class="newsletter-section">
+    <div class="newsletter-container">
+        <div class="newsletter-left">
+            <p class="section-label">Stay Connected</p>
+            <h2>Get the<br>Newsletter</h2>
+            <p>
+                Stay up to date on upcoming events, community highlights,
+                opportunities, and announcements — straight to your inbox.
+            </p>
+        </div>
+
+        <div class="newsletter-right">
+            <form class="newsletter-form" id="newsletterForm">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <button type="submit" class="newsletter-btn">Join the Newsletter</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer class="footer">
+    <div class="footer-socials">
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/ghsa_uofc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="mailto:ucalgaryghsa@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+        <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+    </div>
+    <div class="footer-divider"></div>
+    <p class="footer-text">© 2026 <span>GHSA UCalgary Chapter</span>. All Rights Reserved.</p>
+</footer>
+
+<script src="./JS/Home.js"></script>
+</body>
+</html>

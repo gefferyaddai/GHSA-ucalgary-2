@@ -1,0 +1,479 @@
+/* ============================================================
+   GHSA — About Us Page Styles
+   Font: DM Sans (inherited from NavBar.css import)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&display=swap');
+
+/* ── TOKENS ─────────────────────────────────────────── */
+:root {
+    --green:       #006b3f;
+    --green-light: #008c52;
+    --gold:        #fcd116;
+    --red:         #ce1126;
+    --black:       #0a0a0a;
+    --off-white:   #f7f7f5;
+    --white:       #ffffff;
+    --grey-100:    #f2f2f0;
+    --grey-200:    #e4e4e0;
+    --grey-400:    #999990;
+    --grey-700:    #444440;
+    --text:        #111110;
+    --nav-h:       72px;
+    --radius-sm:   12px;
+    --radius-md:   20px;
+    --radius-lg:   32px;
+    --radius-pill: 999px;
+    --shadow-sm:   0 2px 8px rgba(0,0,0,0.06);
+    --shadow-md:   0 8px 24px rgba(0,0,0,0.08);
+    --shadow-lg:   0 20px 48px rgba(0,0,0,0.10);
+}
+
+/* ── RESET & BASE ───────────────────────────────────── */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── SHARED UTILITIES ───────────────────────────────── */
+.section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 14px;
+}
+
+.section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--green);
+    border-radius: 2px;
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    line-height: 1.05;
+}
+
+/* ── SECTION 1 — ABOUT HERO ─────────────────────────── */
+.about-hero-section {
+    padding: 140px 64px 120px;
+    background: var(--off-white);
+    position: relative;
+    overflow: hidden;
+}
+
+/* subtle decorative flag stripe at top */
+.about-hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(
+            90deg,
+            var(--red) 0%, var(--red) 33.33%,
+            var(--gold) 33.33%, var(--gold) 66.66%,
+            var(--green) 66.66%, var(--green) 100%
+    );
+}
+
+.about-hero-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.about-hero-left .section-title {
+    margin: 14px 0 28px;
+}
+
+.about-hero-left p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--grey-700);
+    max-width: 480px;
+}
+
+.about-hero-left p + p {
+    margin-top: 16px;
+}
+
+/* stat pills */
+.about-stats {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.stat-pill {
+    background: var(--white);
+    border: 1px solid var(--grey-200);
+    border-radius: var(--radius-md);
+    padding: 18px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 120px;
+}
+
+.stat-pill strong {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.03em;
+    line-height: 1;
+}
+
+.stat-pill span {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--grey-400);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* right side — real image */
+.about-hero-right {
+    position: relative;
+    height: 520px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.about-hero-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.about-hero-right:hover img {
+    transform: scale(1.03);
+}
+
+/* Ghana flag accent bar along bottom of image */
+.about-hero-right::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(
+            90deg,
+            var(--red) 0%, var(--red) 33.33%,
+            var(--gold) 33.33%, var(--gold) 66.66%,
+            var(--green) 66.66%, var(--green) 100%
+    );
+    z-index: 2;
+}
+
+/* ── SECTION 2 — MISSION SPLIT ──────────────────────── */
+.mission-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
+}
+
+.mission-image {
+    background-image: url("../assets-about/students-standing-togeter.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 560px;
+    position: relative;
+}
+
+/* overlay for depth */
+.mission-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            to right,
+            rgba(0,0,0,0.08) 0%,
+            transparent 60%
+    );
+}
+
+.mission-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 96px 72px;
+    background: var(--white);
+}
+
+.mission-content .section-title {
+    margin: 14px 0 32px;
+}
+
+.mission-content p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--grey-700);
+    max-width: 520px;
+}
+
+.mission-content p + p {
+    margin-top: 18px;
+}
+
+/* values chips */
+.mission-values {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 36px;
+}
+
+.value-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+    border: 1.5px solid var(--grey-200);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text);
+    background: var(--grey-100);
+    letter-spacing: 0.02em;
+}
+
+.value-chip::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    flex-shrink: 0;
+}
+
+/* ── SECTION 3 — INSTAGRAM ──────────────────────────── */
+.instagram-section {
+    padding: 120px 64px;
+    background: var(--off-white);
+}
+
+.instagram-container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.instagram-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.instagram-header-left .section-title {
+    margin-top: 14px;
+}
+
+.instagram-follow-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: var(--radius-pill);
+    background: var(--text);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background 0.25s ease, transform 0.25s ease;
+    flex-shrink: 0;
+    align-self: flex-end;
+}
+
+.instagram-follow-btn:hover {
+    background: var(--green);
+    transform: translateY(-2px);
+}
+
+.instagram-follow-btn i {
+    font-size: 1rem;
+}
+
+.ig-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+/* ── INSTAGRAM HEART BURST ──────────────────────────── */
+.ig-card {
+    background: var(--white);
+    border: 1px solid var(--grey-200);
+    border-radius: var(--radius-md);
+    overflow: visible;
+    padding: 12px;
+    min-height: 300px;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+    position: relative;
+}
+
+.ig-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+
+/* hearts spawned by JS */
+.heart-particle {
+    position: absolute;
+    font-size: 1.2rem;
+    pointer-events: none;
+    animation: heartFloat 0.9s ease-out forwards;
+    z-index: 10;
+    user-select: none;
+}
+
+@keyframes heartFloat {
+    0%   { opacity: 1; transform: translate(0, 0) scale(0.4); }
+    40%  { opacity: 1; transform: translate(var(--tx), calc(var(--ty) * 0.4)) scale(1.1); }
+    100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.7); }
+}
+
+/* mobile: parallax doesn't work well, fall back to scroll */
+@media (max-width: 1100px) {
+    .mission-image {
+        background-attachment: scroll;
+    }
+}
+
+.placeholder {
+    min-height: 280px;
+    border: 1.5px dashed var(--grey-200);
+    border-radius: var(--radius-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    color: var(--grey-400);
+    background: var(--grey-100);
+    gap: 8px;
+}
+
+.placeholder i {
+    font-size: 1.8rem;
+    color: var(--grey-200);
+}
+
+.strong {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--grey-700);
+}
+
+.tiny {
+    font-size: 0.82rem;
+    color: var(--grey-400);
+}
+
+.mono {
+    font-family: monospace;
+    color: var(--green);
+    font-weight: 700;
+}
+
+/* Instagram embeds fill card */
+.ig-card .instagram-media {
+    min-width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 1100px) {
+    .about-hero-container {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .about-hero-right {
+        height: 320px;
+    }
+
+    .mission-section {
+        grid-template-columns: 1fr;
+    }
+
+    .mission-image {
+        min-height: 380px;
+        background-attachment: scroll;
+    }
+
+    .mission-content {
+        padding: 72px 48px;
+    }
+
+    .ig-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-hero-section {
+        padding: 100px 24px 80px;
+    }
+
+    .about-hero-left p,
+    .mission-content p {
+        font-size: 0.975rem;
+    }
+
+    .mission-content {
+        padding: 56px 24px;
+    }
+
+    .instagram-section {
+        padding: 80px 24px;
+    }
+
+    .instagram-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .ig-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+    }
+
+    .about-stats {
+        gap: 12px;
+    }
+}

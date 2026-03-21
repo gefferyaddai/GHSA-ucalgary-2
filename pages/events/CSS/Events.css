@@ -1,0 +1,510 @@
+/* ============================================================
+   GHSA — Events Page Styles
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900&display=swap');
+
+/* ── TOKENS ─────────────────────────────────────────── */
+:root {
+    --green:       #006b3f;
+    --green-light: #008c52;
+    --gold:        #fcd116;
+    --red:         #ce1126;
+    --black:       #0a0a0a;
+    --off-white:   #f7f7f5;
+    --white:       #ffffff;
+    --grey-100:    #f2f2f0;
+    --grey-200:    #e4e4e0;
+    --grey-400:    #999990;
+    --grey-700:    #444440;
+    --text:        #111110;
+    --nav-h:       72px;
+    --radius-sm:   12px;
+    --radius-md:   20px;
+    --radius-lg:   32px;
+    --radius-pill: 999px;
+    --shadow-sm:   0 2px 8px rgba(0,0,0,0.06);
+    --shadow-md:   0 8px 24px rgba(0,0,0,0.08);
+    --shadow-lg:   0 20px 48px rgba(0,0,0,0.10);
+}
+
+/* ── RESET & BASE ───────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── SHARED ─────────────────────────────────────────── */
+.section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 14px;
+}
+.section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--green);
+    border-radius: 2px;
+}
+.section-title {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    line-height: 1.05;
+    margin-bottom: 16px;
+}
+.section-sub {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--grey-700);
+    max-width: 560px;
+}
+
+/* ── PAGE WRAPPER ───────────────────────────────────── */
+.events-page {
+    background: var(--white);
+}
+
+/* ── SECTION 1 — UPCOMING EVENTS ───────────────────── */
+.upcoming-section {
+    padding: 120px 64px 100px;
+    background: var(--off-white);
+    position: relative;
+    overflow: hidden;
+}
+
+.upcoming-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(
+            90deg,
+            var(--red) 0%, var(--red) 33.33%,
+            var(--gold) 33.33%, var(--gold) 66.66%,
+            var(--green) 66.66%, var(--green) 100%
+    );
+}
+
+.upcoming-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 56px;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.notify-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 24px;
+    border-radius: var(--radius-pill);
+    background: var(--green);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(0,107,63,0.22);
+    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+    align-self: flex-end;
+}
+.notify-btn:hover {
+    background: var(--green-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,107,63,0.28);
+}
+.notify-btn i { font-size: 0.9rem; }
+
+/* Empty state */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 40px;
+    background: var(--white);
+    border: 1px solid var(--grey-200);
+    border-radius: var(--radius-lg);
+    gap: 16px;
+}
+
+.empty-state-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--grey-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 4px;
+}
+
+.empty-state h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.empty-state p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--grey-400);
+    max-width: 400px;
+}
+
+/* Event cards grid (shown when events exist) */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.event-card {
+    background: var(--white);
+    border: 1px solid var(--grey-200);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+}
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.event-card-banner {
+    height: 180px;
+    background: var(--grey-100);
+    position: relative;
+    overflow: hidden;
+}
+.event-card-banner img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+}
+
+.event-date-badge {
+    position: absolute;
+    top: 16px; left: 16px;
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+    box-shadow: var(--shadow-sm);
+}
+.event-date-badge .month {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--green);
+}
+.event-date-badge .day {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text);
+}
+
+.event-card-body {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.event-card-body h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+}
+.event-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: var(--grey-400);
+    font-weight: 500;
+}
+.event-card-meta i { font-size: 0.75rem; }
+.event-card-body p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--grey-700);
+    margin-top: 4px;
+    flex: 1;
+}
+.event-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--green);
+    text-decoration: none;
+    transition: gap 0.2s ease;
+}
+.event-card-link:hover { gap: 10px; }
+
+/* ── SECTION 2 — COUNTDOWN ──────────────────────────── */
+.countdown-section {
+    padding: 100px 64px;
+    background: var(--black);
+    color: var(--white);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* subtle pattern */
+.countdown-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(252,209,22,0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+}
+
+.countdown-section .section-label {
+    color: var(--gold);
+    justify-content: center;
+}
+.countdown-section .section-label::before {
+    background: var(--gold);
+}
+
+.countdown-event-name {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 14px 0 48px;
+    color: var(--white);
+}
+
+.countdown-no-event {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.45);
+    margin-top: 12px;
+}
+
+.countdown-grid {
+    display: inline-flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 100px;
+}
+
+.countdown-number {
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--white);
+    line-height: 1;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    min-width: 100px;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+    transition: color 0.3s ease;
+}
+
+.countdown-unit:first-child .countdown-number { color: var(--gold); }
+
+.countdown-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+}
+
+.countdown-separator {
+    font-size: 3rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.2);
+    align-self: center;
+    margin-top: -8px;
+    padding-bottom: 32px;
+}
+
+/* ── SECTION 3 — PAST EVENTS ────────────────────────── */
+.past-events-section {
+    padding: 100px 64px;
+    background: var(--white);
+}
+
+.past-events-container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.past-events-header {
+    margin-bottom: 48px;
+}
+
+.past-events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.past-event-row {
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    align-items: center;
+    gap: 28px;
+    padding: 24px 28px;
+    background: var(--grey-100);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--grey-200);
+    transition: background 0.2s ease, border-color 0.2s ease;
+    cursor: default;
+}
+.past-event-row:hover {
+    background: var(--white);
+    border-color: var(--grey-400);
+}
+
+.past-event-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2px;
+}
+.past-event-date .month {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--green);
+}
+.past-event-date .day {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1;
+}
+.past-event-date .year {
+    font-size: 0.72rem;
+    color: var(--grey-400);
+    font-weight: 500;
+}
+
+.past-event-info h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+.past-event-info p {
+    font-size: 0.85rem;
+    color: var(--grey-400);
+}
+
+.past-event-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: var(--grey-200);
+    color: var(--grey-700);
+    white-space: nowrap;
+}
+
+/* ── SECTION 4 — CALENDAR ───────────────────────────── */
+.calendar-section {
+    padding: 100px 64px;
+    background: var(--off-white);
+}
+
+.calendar-container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.calendar-header {
+    margin-bottom: 40px;
+}
+
+.calendar-card {
+    background: var(--white);
+    border: 1px solid var(--grey-200);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.calendar-card iframe {
+    display: block;
+    width: 100%;
+    border: none;
+    min-height: 600px;
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 1100px) {
+    .upcoming-section,
+    .past-events-section,
+    .calendar-section,
+    .countdown-section { padding-left: 40px; padding-right: 40px; }
+}
+
+@media (max-width: 768px) {
+    .upcoming-section,
+    .past-events-section,
+    .calendar-section,
+    .countdown-section { padding: 80px 24px; }
+
+    .upcoming-header { flex-direction: column; align-items: flex-start; }
+    .notify-btn { width: 100%; justify-content: center; }
+
+    .past-event-row {
+        grid-template-columns: 72px 1fr;
+        gap: 16px;
+    }
+    .past-event-tag { display: none; }
+
+    .countdown-grid { gap: 12px; }
+    .countdown-number { min-width: 72px; padding: 14px 16px; font-size: 2.2rem; }
+    .countdown-separator { font-size: 2rem; }
+}

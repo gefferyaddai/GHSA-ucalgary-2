@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us — GHSA UCalgary</title>
+    <link rel="stylesheet" href="../home/NavBar.css">
+    <link rel="stylesheet" href="CSS/about.css">
+    <link rel="stylesheet" href="../home/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<!-- ── NAV ────────────────────────────────────────── -->
+<nav class="nav" id="mainNav">
+    <div class="wrap nav-inner">
+        <div class="brand">
+            <img src="../home/assets/oax-tech-logo.png" alt="GHSA Logo" />
+            <span>GHSA</span>
+        </div>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+
+        <div class="nav-links" id="navLinks">
+            <a href="../home/Home.html">Home</a>
+            <a href="../aboutUs/AboutUs.html" class="active">About Us</a>
+            <a href="../events/Events.html">Events</a>
+            <a href="../MTT/MTT.html">Meet Us</a>
+            <a href="../whyjoin/WhyJoin.html">Why Join</a>
+            <a href="../BecomeSponsor/BecomeSponser.html">Sponsor</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ── SECTION 1 — ABOUT HERO ─────────────────────── -->
+<section class="about-hero-section">
+    <div class="about-hero-container">
+
+        <div class="about-hero-left">
+            <p class="section-label">About Us</p>
+            <h1 class="section-title">A home away<br>from home</h1>
+            <p>
+                The Ghana Students Association at the University of Calgary was created
+                to build a home away from home for Ghanaian students and anyone interested
+                in Ghanaian culture. GHSA was founded to strengthen community, celebrate
+                culture, and create a space where students can connect, support one another,
+                and feel represented on campus.
+            </p>
+            <p>
+                Through events, networking, mentorship, and shared experiences, GHSA continues
+                to grow as a student-led community committed to belonging, leadership, and
+                cultural pride.
+            </p>
+
+            <div class="about-stats">
+                <div class="stat-pill">
+                    <strong>100+</strong>
+                    <span>Members</span>
+                </div>
+                <div class="stat-pill">
+                    <strong>10+</strong>
+                    <span>Events/Year</span>
+                </div>
+                <div class="stat-pill">
+                    <strong>2020</strong>
+                    <span>Founded</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-hero-right">
+            <img src="assets-about/black-students-standing.jpg" alt="GHSA members together">
+        </div>
+
+    </div>
+</section>
+
+<!-- ── SECTION 2 — MISSION ────────────────────────── -->
+<section class="mission-section">
+    <div class="mission-image"></div>
+
+    <div class="mission-content">
+        <p class="section-label">Our Mission</p>
+        <h2 class="section-title">Culture, community,<br>and opportunity</h2>
+
+        <p>
+            Our mission is to create a welcoming and empowering space for students
+            through culture, community, and opportunity. GHSA aims to support students
+            socially, academically, and professionally while promoting Ghanaian identity
+            and excellence throughout campus life.
+        </p>
+        <p>
+            As a club, we strive to host meaningful events, encourage student involvement,
+            build long-lasting connections, and provide a platform where members can grow
+            in confidence, leadership, and unity.
+        </p>
+
+        <div class="mission-values">
+            <span class="value-chip">Community</span>
+            <span class="value-chip">Leadership</span>
+            <span class="value-chip">Cultural Pride</span>
+            <span class="value-chip">Academic Excellence</span>
+            <span class="value-chip">Belonging</span>
+            <span class="value-chip">Unity</span>
+        </div>
+    </div>
+</section>
+
+<!-- ── SECTION 3 — INSTAGRAM ──────────────────────── -->
+<section class="instagram-section">
+    <div class="instagram-container">
+
+        <div class="instagram-header">
+            <div class="instagram-header-left">
+                <p class="section-label">Social</p>
+                <h2 class="section-title">Follow our<br>Instagram</h2>
+            </div>
+            <a
+                    href="https://www.instagram.com/ghsa_uofc/"
+                    class="instagram-follow-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+            >
+                <i class="fa-brands fa-instagram"></i>
+                @ghsa_uofc
+            </a>
+        </div>
+
+        <div class="ig-grid" id="igGrid"></div>
+
+    </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer class="footer">
+    <div class="footer-socials">
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/ghsa_uofc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="/cdn-cgi/l/email-protection#b8cddbd9d4dfd9cac1dfd0cbd9f8dfd5d9d1d496dbd7d5" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+        <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+    </div>
+    <div class="footer-divider"></div>
+    <p class="footer-text">© 2026 <span>GHSA UCalgary Chapter</span>. All Rights Reserved.</p>
+</footer>
+
+<script async src="https://www.instagram.com/embed.js"></script>
+<script src="./JS/AboutUs.js"></script>
+<script>
+    // Nav scroll + hamburger
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    const navToggle = document.getElementById('navToggle');
+    const navLinks  = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        navToggle.classList.toggle('open', isOpen);
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('clic

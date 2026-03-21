@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events — GHSA UCalgary</title>
+    <link rel="stylesheet" href="../home/NavBar.css">
+    <link rel="stylesheet" href="CSS/Events.css">
+    <link rel="stylesheet" href="../home/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<!-- ── NAV ────────────────────────────────────────── -->
+<nav class="nav" id="mainNav">
+    <div class="wrap nav-inner">
+        <div class="brand">
+            <img src="../home/assets/oax-tech-logo.png" alt="GHSA Logo" />
+            <span>GHSA</span>
+        </div>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+
+        <div class="nav-links" id="navLinks">
+            <a href="../home/Home.html">Home</a>
+            <a href="../aboutUs/AboutUs.html">About Us</a>
+            <a href="../events/Events.html" class="active">Events</a>
+            <a href="../MTT/MTT.html">Meet Us</a>
+            <a href="../whyjoin/WhyJoin.html">Why Join</a>
+            <a href="../BecomeSponsor/BecomeSponser.html">Sponsor</a>
+        </div>
+    </div>
+</nav>
+
+<div class="events-page">
+
+    <!-- ── SECTION 1 — UPCOMING EVENTS ───────────────── -->
+    <section class="upcoming-section">
+        <div class="upcoming-header">
+            <div>
+                <p class="section-label">What's On</p>
+                <h1 class="section-title">Upcoming Events</h1>
+                <p class="section-sub">Stay tuned for GHSA events, gatherings, and community activities.</p>
+            </div>
+            <button class="notify-btn" id="notifyBtn">
+                <i class="fa-regular fa-bell"></i>
+                Get Notified
+            </button>
+        </div>
+
+        <!-- Empty state — remove this and use .events-grid below when events exist -->
+        <div class="empty-state">
+            <div class="empty-state-icon">📅</div>
+            <h3>No Upcoming Events</h3>
+            <p>Nothing scheduled right now — check back soon or get notified when new events drop.</p>
+        </div>
+
+        <!-- Event cards — uncomment and populate when you have events
+        <div class="events-grid">
+            <div class="event-card">
+                <div class="event-card-banner">
+                    <img src="./assets/event1.jpg" alt="Event">
+                    <div class="event-date-badge">
+                        <span class="month">Apr</span>
+                        <span class="day">12</span>
+                    </div>
+                </div>
+                <div class="event-card-body">
+                    <h3>Cultural Night 2026</h3>
+                    <div class="event-card-meta">
+                        <i class="fa-regular fa-clock"></i> 6:00 PM
+                        &nbsp;·&nbsp;
+                        <i class="fa-regular fa-location-dot"></i> MacHall Ballroom
+                    </div>
+                    <p>Join us for an evening of food, dance, and celebration of Ghanaian culture.</p>
+                    <a href="#" class="event-card-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+        -->
+
+    </section>
+
+    <!-- ── SECTION 2 — COUNTDOWN ──────────────────────── -->
+    <section class="countdown-section">
+        <p class="section-label">Next Event</p>
+        <h2 class="countdown-event-name" id="countdownEventName">Cultural Night 2026</h2>
+
+        <div class="countdown-grid" id="countdownGrid">
+            <div class="countdown-unit">
+                <div class="countdown-number" id="cdDays">--</div>
+                <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-unit">
+                <div class="countdown-number" id="cdHours">--</div>
+                <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-unit">
+                <div class="countdown-number" id="cdMinutes">--</div>
+                <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-unit">
+                <div class="countdown-number" id="cdSeconds">--</div>
+                <div class="countdown-label">Seconds</div>
+            </div>
+        </div>
+
+        <p class="countdown-no-event" id="countdownNote">
+            Set your next event date in Events.js to activate the countdown.
+        </p>
+    </section>
+
+    <!-- ── SECTION 3 — PAST EVENTS ────────────────────── -->
+    <section class="past-events-section">
+        <div class="past-events-container">
+            <div class="past-events-header">
+                <p class="section-label">Look Back</p>
+                <h2 class="section-title">Past Events</h2>
+                <p class="section-sub">A look at what we've put together for our community.</p>
+            </div>
+
+            <div class="past-events-list">
+
+                <div class="past-event-row">
+                    <div class="past-event-date">
+                        <span class="month">Nov</span>
+                        <span class="day">15</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="past-event-info">
+                        <h3>Cultural Night 2025</h3>
+                        <p>An evening of food, fashion, and Ghanaian culture at MacHall Ballroom</p>
+                    </div>
+                    <span class="past-event-tag">Cultural</span>
+                </div>
+
+                <div class="past-event-row">
+                    <div class="past-event-date">
+                        <span class="month">Sep</span>
+                        <span class="day">20</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="past-event-info">
+                        <h3>Welcome Back BBQ</h3>
+                        <p>Kicking off the new school year with food and new friendships</p>
+                    </div>
+                    <span class="past-event-tag">Social</span>
+                </div>
+
+                <div class="past-event-row">
+                    <div class="past-event-date">
+                        <span class="month">Feb</span>
+                        <span class="day">08</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="past-event-info">
+                        <h3>Academic Workshop</h3>
+                        <p>Study strategies, resources, and peer support for winter semester</p>
+                    </div>
+                    <span class="past-event-tag">Academic</span>
+                </div>
+
+                <div class="past-event-row">
+                    <div class="past-event-date">
+                        <span class="month">Oct</span>
+                        <span class="day">03</span>
+                        <span class="year">2024</span>
+                    </div>
+                    <div class="past-event-info">
+                        <h3>Networking Night</h3>
+                        <p>Connecting students with Ghanaian professionals in Calgary</p>
+                    </div>
+                    <span class="past-event-tag">Networking</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── SECTION 4 — CALENDAR ───────────────────────── -->
+    <section class="calendar-section">
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <p class="section-label">Schedule</p>
+                <h2 class="section-title">Event Calendar</h2>
+                <p class="section-sub">View the full GHSA schedule and plan ahead.</p>
+            </div>
+
+            <div class="calendar-card">
+                <iframe
+                        src="YOUR_GOOGLE_CALENDAR_EMBED_LINK"
+                        width="100%"
+                        height="640"
+                        frameborder="0"
+                        scrolling="no"
+                        title="GHSA Event Calendar">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer class="footer">
+    <div class="footer-socials">
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/ghsa_uofc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="mailto:ucalgaryghsa@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+        <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+    </div>
+    <div class="footer-divider"></div>
+    <p class="footer-text">© 2026 <span>GHSA UCalgary Chapter</span>. All Rights Reserved.</p>
+</footer>
+
+<script src="JS/Events.js"></script>
+<script>
+    // Nav scroll + hamburger
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+    const navToggle = document.getElementById('navToggle');
+    const navLinks  = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        navToggle.classList.toggle('open', isOpen);
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            navToggle.classList.remove('open');
+        });
+    });
+</script>
+</body>
+</html>
