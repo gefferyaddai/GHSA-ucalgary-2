@@ -125,8 +125,9 @@ notifyForm.addEventListener('submit', async (e) => {
     try {
         // Mailchimp requires a GET request with no-cors for browser submissions
         const params = new URLSearchParams({
-            FNAME: firstName,
-            EMAIL: email,
+            FNAME:     firstName,
+            EMAIL:     email,
+            tags:      'get-event-notification',
             subscribe: 'Subscribe',
         });
 
