@@ -2,20 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sponsor</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Sponsor — GHSA UCalgary</title>
     <link rel="stylesheet" href="../home/NavBar.css">
+    <link rel="stylesheet" href="CSS/BecomeSponsor.css">
+    <link rel="stylesheet" href="../home/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
-<!-- Nav -->
-<nav class="nav">
+
+<!-- ── NAV ────────────────────────────────────────── -->
+<nav class="nav" id="mainNav">
     <div class="wrap nav-inner">
         <div class="brand">
-            <img src="./assets/oax-tech-logo.png" alt="GHSA Logo" />
+            <img src="../home/assets/oax-tech-logo.png" alt="GHSA Logo" />
             <span>GHSA</span>
         </div>
-
-        <div class="nav-links">
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links" id="navLinks">
             <a href="../home/Home.html">Home</a>
             <a href="../aboutUs/AboutUs.html">About Us</a>
             <a href="../events/Events.html">Events</a>
@@ -25,5 +33,353 @@
         </div>
     </div>
 </nav>
+
+<!-- ── SECTION 1 — HERO ───────────────────────────── -->
+<section class="sp-hero">
+    <div class="sp-hero-inner">
+        <p class="section-label">Partner With Us</p>
+        <h1 class="sp-hero-title">
+            Invest in the next<br>generation of <span>Ghanaian</span> leaders
+        </h1>
+        <p class="sp-hero-sub">
+            Your support helps GHSA create meaningful experiences, celebrate
+            culture, and empower students to thrive at UCalgary and beyond.
+        </p>
+        <div class="sp-hero-btns">
+            <a href="#individual" class="sp-btn-primary">
+                <i class="fa-solid fa-user"></i> Sponsor as an Individual
+            </a>
+            <a href="#business" class="sp-btn-secondary">
+                <i class="fa-solid fa-building"></i> Sponsor as a Business
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ── SECTION 2 — WHY SPONSOR ────────────────────── -->
+<section class="sp-why">
+    <div class="sp-why-container">
+        <div class="sp-why-left">
+            <p class="section-label">Why It Matters</p>
+            <h2 class="section-title">Why support<br>GHSA?</h2>
+            <p>
+                Community contributions directly support student cultural
+                programming and leadership development at the University of Calgary.
+            </p>
+            <p>
+                Our flagship events attract <strong>300–500+ attendees</strong> including
+                students, families, and community leaders — and your support
+                makes them possible.
+            </p>
+
+            <!-- Social media metrics -->
+            <ul class="sp-why-metrics">
+                <li><i class="fa-brands fa-instagram"></i> <strong>24K+</strong> views across 3 Instagram videos &amp; stories</li>
+                <li><i class="fa-solid fa-heart"></i> <strong>1.2K+</strong> interactions across posts and stories</li>
+                <li><i class="fa-solid fa-eye"></i> <strong>2,556+</strong> profile visits</li>
+                <li><i class="fa-brands fa-tiktok"></i> <strong>4,969+</strong> views on TikTok</li>
+                <li><i class="fa-solid fa-share-nodes"></i> <strong>229+</strong> shares across 3 videos</li>
+            </ul>
+        </div>
+
+        <div class="sp-why-right">
+            <div class="sp-why-card">
+                <span class="sp-why-icon">🇬🇭</span>
+                <div>
+                    <h3>Strengthen Cultural Identity</h3>
+                    <p>Promote Ghanaian heritage, create spaces where students feel connected to their culture, and celebrate Ghana through events and performances.</p>
+                </div>
+            </div>
+            <div class="sp-why-card">
+                <span class="sp-why-icon">🚀</span>
+                <div>
+                    <h3>Support Student Growth</h3>
+                    <p>Help students develop leadership skills, access networking opportunities with professionals, and build community among Ghanaian and African students.</p>
+                </div>
+            </div>
+            <div class="sp-why-card">
+                <span class="sp-why-icon">🌍</span>
+                <div>
+                    <h3>Build a Stronger Community</h3>
+                    <p>Connect students with the Ghanaian diaspora, encourage mentorship and intergenerational support, and strengthen cultural representation on campus.</p>
+                </div>
+            </div>
+            <div class="sp-why-card">
+                <span class="sp-why-icon">🎉</span>
+                <div>
+                    <h3>Enable Meaningful Events</h3>
+                    <p>Fund Cultural Night, Ghana Independence Celebrations, Networking &amp; Career Events, Food Festivals, and community-building social events.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── SECTION 3 — INDIVIDUAL / STRIPE ────────────── -->
+<section class="sp-individual" id="individual">
+    <div class="sp-individual-container">
+        <div class="sp-individual-left">
+            <p class="section-label">Individual Sponsorship</p>
+            <h2 class="section-title">Give what<br>you can</h2>
+            <p>
+                Every dollar counts. Whether it's $10 or $500, individual
+                contributions go directly toward GHSA events, resources,
+                and community initiatives. No amount is too small — your
+                generosity makes a real impact.
+            </p>
+        </div>
+
+        <div class="sp-stripe-card">
+            <h3>Choose an amount to donate</h3>
+
+            <div class="sp-amount-grid">
+                <button class="sp-amount-btn selected" data-amount="10">$10</button>
+                <button class="sp-amount-btn" data-amount="25">$25</button>
+                <button class="sp-amount-btn" data-amount="50">$50</button>
+                <button class="sp-amount-btn custom-btn" data-amount="custom">Custom</button>
+            </div>
+
+            <div class="sp-custom-input-wrap" id="customWrap">
+                <span>$</span>
+                <input
+                        type="number"
+                        class="sp-custom-input"
+                        id="customAmount"
+                        placeholder="Enter amount"
+                        min="1"
+                        step="1"
+                >
+            </div>
+
+            <button class="sp-donate-btn" id="donateBtn">
+                <i class="fa-solid fa-heart"></i>
+                <span id="donateBtnLabel">Donate $10</span>
+            </button>
+
+            <p class="sp-stripe-note">
+                <i class="fa-brands fa-stripe"></i>
+                Secured by Stripe — your payment info is never stored
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ── INLINE CTA DIVIDER ─────────────────────────── -->
+<div style="background: var(--green); padding: 48px 64px; text-align: center;">
+    <p style="font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 16px;">
+        Want to make a bigger impact? Explore our community support levels below.
+    </p>
+    <a href="#business" class="sp-btn-primary" style="display: inline-flex;">
+        <i class="fa-solid fa-arrow-down"></i> View Support Levels
+    </a>
+</div>
+
+<!-- ── SECTION 4 — COMMUNITY SUPPORT TIERS ────────── -->
+<section class="sp-packages" id="business">
+    <div class="sp-packages-container">
+        <div class="sp-packages-header">
+            <p class="section-label">Community Support Levels</p>
+            <h2 class="section-title">Choose your level of support</h2>
+            <p>
+                These tiers are designed for individuals, alumni, and families
+                who want to support Ghanaian students and culture.
+                Every contribution makes a real difference.
+            </p>
+        </div>
+
+        <div class="sp-tiers">
+
+            <!-- COMMUNITY SUPPORTER -->
+            <div class="sp-tier bronze">
+                <div class="sp-tier-header">
+                    <div class="sp-tier-dot"></div>
+                    <div class="sp-tier-name">🌟 Community Supporter</div>
+                    <div class="sp-tier-price">$50 – $150</div>
+                    <div class="sp-tier-desc">For those who want to show support for Ghanaian students.</div>
+                </div>
+                <div class="sp-tier-perks">
+                    <div class="sp-perk"><i class="fa-solid fa-check"></i> Name in GHSA community supporter list</div>
+                    <div class="sp-perk"><i class="fa-solid fa-check"></i> Recognition in event digital program</div>
+                    <div class="sp-perk"><i class="fa-solid fa-check"></i> Social media thank-you post (group)</div>
+                </div>
+                <div class="sp-tier-impact" style="margin: 0 20px 16px; padding: 12px 16px; background: #f2f2f0; border-radius: 12px; font-size: 0.8rem; color: #444; font-style: italic;">
+                    Helps support event materials, decorations, and cultural programming.
+                </div>
+                <div class="sp-tier-cta">
+                    <button class="sp-tier-btn" data-tier="community">Select This Level</button>
+                </div>
+            </div>
+
+            <!-- CULTURAL ADVOCATE -->
+            <div class="sp-tier silver">
+                <div class="sp-tier-header">
+                    <div class="sp-tier-dot"></div>
+                    <div class="sp-tier-name">⭐ Cultural Advocate</div>
+                    <div class="sp-tier-price">$200 – $350</div>
+                    <div class="sp-tier-desc">For those who want to be meaningfully recognized for their contribution.</div>
+                </div>
+                <div class="sp-tier-perks">
+                    <div class="sp-perk"><i class="fa-solid fa-check"></i> Everything in Community Supporter</div>
+                    <div class="sp-perk"><i class="fa-solid fa-check"></i> 1 regular ticket to a major GHSA event</div>
+                    <div class="sp-perk"><i class="fa-solid fa-check"></i> Individual recognition on appreciation slide</div>
+                    <div class="sp-perk"><i class="fa-solid fa-check"></i> Name listed on GHSA supporter page</div>
+                    <div class="sp-perk"><i class="fa-solid fa-check"></i> Special thank-you during event acknowledgement</div>
+                </div>
+                <div class="sp-tier-impact" style="margin: 0 20px 16px; padding: 12px 16px; background: #f2f2f0; border-radius: 12px; font-size: 0.8rem; color: #444; font-style: italic;">
+                    Supports cultural programming, performances, and student engagement activities.
+                </div>
+                <div class="sp-tier-cta">
+                    <button class="sp-tier-btn" data-tier="advocate">Select This Level</button>
+                </div>
+            </div>
+
+            <!-- COMMUNITY CHAMPION -->
+            <div class="sp-tier gold featured">
+                <div class="sp-tier-badge">Most Impactful</div>
+                <div class="sp-tier-header">
+                    <div class="sp-tier-dot"></div>
+                    <div class="sp-tier-name">🌍 Community Champion</div>
+                    <div class="sp-tier-price">$400 – $750</div>
+                    <div class="sp-tier-desc">For those who want to make a significant contribution to the community.</div>
+                </div>
+                <div class="sp-tier-perks">
+                    <div class="sp-perk"><i class="fa-solid fa-check"></i> Everything in Cultural Advocate</div>
+                    <div class="sp-perk"><i class="fa-solid fa-check"></i> 1 complimentary ticket to a major GHSA event</div>
+                    <div class="sp-perk"><i class="fa-solid fa-check"></i> Recognition in social media appreciation post</div>
+                    <div class="sp-perk"><i class="fa-solid fa-check"></i> Name featured on event supporter slide</div>
+                </div>
+                <div class="sp-tier-impact" style="margin: 0 20px 16px; padding: 12px 16px; background: #f2f2f0; border-radius: 12px; font-size: 0.8rem; color: #444; font-style: italic;">
+                    Helps fund larger event logistics such as venue costs and cultural performances.
+                </div>
+                <div class="sp-tier-cta">
+                    <button class="sp-tier-btn" data-tier="champion">Select This Level</button>
+                </div>
+            </div>
+
+            <!-- LEGACY SUPPORTER -->
+            <div class="sp-tier platinum">
+                <div class="sp-tier-header">
+                    <div class="sp-tier-dot"></div>
+                    <div class="sp-tier-name">💎 Legacy Supporter</div>
+                    <div class="sp-tier-price">$1,000+</div>
+                    <div class="sp-tier-desc">For those committed to leaving a lasting mark on GHSA.</div>
+                </div>
+                <div class="sp-tier-perks">
+                    <div class="sp-perk"><i class="fa-solid fa-check"></i> Everything in Community Champion</div>
+                    <div class="sp-perk"><i class="fa-solid fa-check"></i> Special recognition at major GHSA events</div>
+                    <div class="sp-perk"><i class="fa-solid fa-check"></i> 2 complimentary VIP event tickets</div>
+                    <div class="sp-perk"><i class="fa-solid fa-check"></i> Featured appreciation post on GHSA social media</div>
+                    <div class="sp-perk"><i class="fa-solid fa-check"></i> Recognition as a major community supporter</div>
+                </div>
+                <div class="sp-tier-impact" style="margin: 0 20px 16px; padding: 12px 16px; background: #f2f2f0; border-radius: 12px; font-size: 0.8rem; color: #444; font-style: italic;">
+                    Provides significant support for large-scale events and cultural initiatives.
+                </div>
+                <div class="sp-tier-cta">
+                    <button class="sp-tier-btn" data-tier="legacy">Select This Level</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ── SECTION 5 — INQUIRY FORM ───────────────────── -->
+<section class="sp-form-section" id="sp-form">
+    <div class="sp-form-container">
+        <div class="sp-form-left">
+            <p class="section-label">Get In Touch</p>
+            <h2 class="section-title">Let's make it<br>official</h2>
+            <p>
+                Fill out the form and our team will be in touch within
+                2 business days to confirm your support level and next steps.
+            </p>
+
+            <div class="sp-contact-chips">
+                <div class="sp-contact-chip">
+                    <i class="fa-regular fa-envelope"></i>
+                    <span><a href="mailto:ucalgaryghsa@gmail.com">ucalgaryghsa@gmail.com</a></span>
+                </div>
+                <div class="sp-contact-chip">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span><a href="https://www.instagram.com/ghsa_uofc/" target="_blank">@ghsa_uofc</a></span>
+                </div>
+            </div>
+        </div>
+
+        <form class="sp-form" id="sponsorForm">
+            <div class="sp-form-row">
+                <div class="sp-field">
+                    <label for="spFirstName">First Name</label>
+                    <input type="text" id="spFirstName" name="firstName" placeholder="Jane" required>
+                </div>
+                <div class="sp-field">
+                    <label for="spLastName">Last Name</label>
+                    <input type="text" id="spLastName" name="lastName" placeholder="Doe" required>
+                </div>
+            </div>
+
+            <div class="sp-field">
+                <label for="spEmail">Email Address</label>
+                <input type="email" id="spEmail" name="email" placeholder="jane@example.com" required>
+            </div>
+
+            <div class="sp-field">
+                <label for="spPackage">Support Level</label>
+                <select id="spPackage" name="package" required>
+                    <option value="" disabled selected>Select a support level</option>
+                    <option value="community">🌟 Community Supporter — $50–$150</option>
+                    <option value="advocate">⭐ Cultural Advocate — $200–$350</option>
+                    <option value="champion">🌍 Community Champion — $400–$750</option>
+                    <option value="legacy">💎 Legacy Supporter — $1,000+</option>
+                    <option value="other">Other / General Inquiry</option>
+                </select>
+            </div>
+
+            <div class="sp-field">
+                <label for="spMessage">Additional Information</label>
+                <textarea
+                        id="spMessage"
+                        name="message"
+                        placeholder="Tell us about yourself, how you'd like to support GHSA, or any questions you have..."
+                ></textarea>
+            </div>
+
+            <button type="submit" class="sp-form-submit">
+                <i class="fa-solid fa-paper-plane"></i>
+                Submit Inquiry
+            </button>
+        </form>
+    </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer class="footer">
+    <div class="footer-socials">
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/ghsa_uofc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="mailto:ucalgaryghsa@gmail.com">ucalgaryghsa@gmail.com</a>
+        <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+    </div>
+    <div class="footer-divider"></div>
+    <p class="footer-text">© 2026 <span>GHSA UCalgary Chapter</span>. All Rights Reserved.</p>
+</footer>
+
+<script src="JS/BecomeSponser.js"></script>
+<script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+    const navToggle = document.getElementById('navToggle');
+    const navLinks  = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        navToggle.classList.toggle('open', isOpen);
+    });
+    navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('open');
+    }));
+</script>
 </body>
 </html>
