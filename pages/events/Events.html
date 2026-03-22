@@ -18,11 +18,9 @@
             <img src="../home/assets/oax-tech-logo.png" alt="GHSA Logo" />
             <span>GHSA</span>
         </div>
-
         <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
             <span></span><span></span><span></span>
         </button>
-
         <div class="nav-links" id="navLinks">
             <a href="../home/Home.html">Home</a>
             <a href="../aboutUs/AboutUs.html">About Us</a>
@@ -50,7 +48,6 @@
             </button>
         </div>
 
-        <!-- Empty state — remove this and use .events-grid below when events exist -->
         <div class="empty-state">
             <div class="empty-state-icon">📅</div>
             <h3>No Upcoming Events</h3>
@@ -80,15 +77,13 @@
             </div>
         </div>
         -->
-
     </section>
 
     <!-- ── SECTION 2 — COUNTDOWN ──────────────────────── -->
     <section class="countdown-section">
         <p class="section-label">Next Event</p>
-        <h2 class="countdown-event-name" id="countdownEventName">Ghana independence day GALA 2027</h2>
-
-        <div class="countdown-grid" id="countdownGrid">
+        <h2 class="countdown-event-name" id="countdownEventName">Ghana Independence Day GALA 2027</h2>
+        <div class="countdown-grid">
             <div class="countdown-unit">
                 <div class="countdown-number" id="cdDays">--</div>
                 <div class="countdown-label">Days</div>
@@ -109,7 +104,6 @@
                 <div class="countdown-label">Seconds</div>
             </div>
         </div>
-
         <p class="countdown-no-event" id="countdownNote">
             Set your next event date in Events.js to activate the countdown.
         </p>
@@ -123,9 +117,7 @@
                 <h2 class="section-title">Past Events</h2>
                 <p class="section-sub">A look at what we've put together for our community.</p>
             </div>
-
             <div class="past-events-list">
-
                 <div class="past-event-row">
                     <div class="past-event-date">
                         <span class="month">Nov</span>
@@ -138,7 +130,6 @@
                     </div>
                     <span class="past-event-tag">Cultural</span>
                 </div>
-
                 <div class="past-event-row">
                     <div class="past-event-date">
                         <span class="month">Sep</span>
@@ -151,7 +142,6 @@
                     </div>
                     <span class="past-event-tag">Social</span>
                 </div>
-
                 <div class="past-event-row">
                     <div class="past-event-date">
                         <span class="month">Feb</span>
@@ -164,7 +154,6 @@
                     </div>
                     <span class="past-event-tag">Academic</span>
                 </div>
-
                 <div class="past-event-row">
                     <div class="past-event-date">
                         <span class="month">Oct</span>
@@ -177,7 +166,6 @@
                     </div>
                     <span class="past-event-tag">Networking</span>
                 </div>
-
             </div>
         </div>
     </section>
@@ -190,7 +178,6 @@
                 <h2 class="section-title">Event Calendar</h2>
                 <p class="section-sub">View the full GHSA schedule and plan ahead.</p>
             </div>
-
             <div class="calendar-card">
                 <iframe
                         src="YOUR_GOOGLE_CALENDAR_EMBED_LINK"
@@ -220,13 +207,53 @@
     <p class="footer-text">© 2026 <span>GHSA UCalgary Chapter</span>. All Rights Reserved.</p>
 </footer>
 
+<!-- ── GET NOTIFIED MODAL ─────────────────────────── -->
+<div class="notify-modal-overlay" id="notifyModal">
+    <div class="notify-modal">
+        <button class="notify-modal-close" id="notifyModalClose">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <!-- Form state -->
+        <div id="notifyFormState">
+            <div class="notify-modal-icon">🔔</div>
+            <h3>Get Notified</h3>
+            <p>Be the first to know when GHSA events are announced.</p>
+            <form id="notifyForm">
+                <div class="notify-field">
+                    <label for="notifyFirstName">First Name</label>
+                    <input type="text" id="notifyFirstName" placeholder="Jane" required>
+                </div>
+                <div class="notify-field">
+                    <label for="notifyEmail">Email Address</label>
+                    <input type="email" id="notifyEmail" placeholder="jane@example.com" required>
+                </div>
+                <button type="submit" class="notify-submit-btn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span id="notifySubmitLabel">Notify Me</span>
+                </button>
+            </form>
+            <p class="notify-modal-note">
+                <i class="fa-solid fa-lock"></i>
+                No spam, ever. Unsubscribe anytime.
+            </p>
+        </div>
+
+        <!-- Success state -->
+        <div id="notifySuccessState" style="display:none; text-align:center; padding: 20px 0;">
+            <div class="notify-modal-icon">🎉</div>
+            <h3>You're on the list!</h3>
+            <p style="margin-top:10px; color:#666; font-size:0.9rem; line-height:1.7;">
+                We'll let you know as soon as the next GHSA event is announced.
+            </p>
+        </div>
+    </div>
+</div>
+
 <script src="JS/Events.js"></script>
 <script>
-    // Nav scroll + hamburger
     const nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', () => {
-        nav.classList.toggle('scrolled', window.scrollY > 40);
-    });
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
     const navToggle = document.getElementById('navToggle');
     const navLinks  = document.getElementById('navLinks');
     navToggle.addEventListener('click', () => {
