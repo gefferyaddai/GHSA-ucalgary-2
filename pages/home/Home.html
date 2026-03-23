@@ -24,7 +24,7 @@
         </button>
 
         <div class="nav-links" id="navLinks">
-            <a href="/Home.html" class="active">Home</a>
+            <a href="./Home.html" class="active">Home</a>
             <a href="../aboutUs/AboutUs.html">About Us</a>
             <a href="../events/Events.html">Events</a>
             <a href="../MTT/MTT.html">Meet Us</a>
@@ -185,5 +185,43 @@
 </footer>
 
 <script src="./JS/Home.js"></script>
+<script>
+    // ── NAV SCROLL SHRINK ──────────────────────────────
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // ── HAMBURGER TOGGLE ───────────────────────────────
+    const navToggle = document.getElementById('navToggle');
+    const navLinks  = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = navLinks.classList.toggle('open');
+        navToggle.classList.toggle('open', isOpen);
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // Close on link click — mobile only
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 860) {
+                navLinks.classList.remove('open');
+                navToggle.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+        if (!nav.contains(e.target) && navLinks.classList.contains('open')) {
+            navLinks.classList.remove('open');
+            navToggle.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+</script>
 </body>
 </html>

@@ -226,7 +226,7 @@
         <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
         <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
         <a href="https://www.instagram.com/ghsa_uofc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="mailto:ucalgaryghsa@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+        <a href="/cdn-cgi/l/email-protection#1d687e7c717a7c6f647a756e7c5d7a707c7471337e7270" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
         <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
     </div>
     <div class="footer-divider"></div>
@@ -239,14 +239,26 @@
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
     const navToggle = document.getElementById('navToggle');
     const navLinks  = document.getElementById('navLinks');
-    navToggle.addEventListener('click', () => {
+
+    navToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
         const isOpen = navLinks.classList.toggle('open');
         navToggle.classList.toggle('open', isOpen);
     });
+
     navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        navToggle.classList.remove('open');
+        if (window.innerWidth <= 860) {
+            navLinks.classList.remove('open');
+            navToggle.classList.remove('open');
+        }
     }));
+
+    document.addEventListener('click', (e) => {
+        if (!nav.contains(e.target)) {
+            navLinks.classList.remove('open');
+            navToggle.classList.remove('open');
+        }
+    });
 </script>
 </body>
 </html>

@@ -297,7 +297,7 @@
             <div class="sp-contact-chips">
                 <div class="sp-contact-chip">
                     <i class="fa-regular fa-envelope"></i>
-                    <span><a href="mailto:ucalgaryghsa@gmail.com">ucalgaryghsa@gmail.com</a></span>
+                    <span><a href="mailto:ucalgaryghsa@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a></span>
                 </div>
                 <div class="sp-contact-chip">
                     <i class="fa-brands fa-instagram"></i>
@@ -366,20 +366,32 @@
     <p class="footer-text">© 2026 <span>GHSA UCalgary Chapter</span>. All Rights Reserved.</p>
 </footer>
 
-<script src="JS/BecomeSponsor.js"></script>
+<script src="JS/BecomeSponser.js"></script>
 <script>
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
     const navToggle = document.getElementById('navToggle');
     const navLinks  = document.getElementById('navLinks');
-    navToggle.addEventListener('click', () => {
+
+    navToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
         const isOpen = navLinks.classList.toggle('open');
         navToggle.classList.toggle('open', isOpen);
     });
+
     navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        navToggle.classList.remove('open');
+        if (window.innerWidth <= 860) {
+            navLinks.classList.remove('open');
+            navToggle.classList.remove('open');
+        }
     }));
+
+    document.addEventListener('click', (e) => {
+        if (!nav.contains(e.target)) {
+            navLinks.classList.remove('open');
+            navToggle.classList.remove('open');
+        }
+    });
 </script>
 </body>
 </html>
