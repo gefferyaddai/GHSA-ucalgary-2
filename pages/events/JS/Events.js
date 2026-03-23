@@ -3,17 +3,13 @@
    ============================================================ */
 
 // ── COUNTDOWN CONFIG ─────────────────────────────────
-// Update name and date when your next event is confirmed
-// Month is 0-indexed: Jan=0, Feb=1 ... Dec=11
 const NEXT_EVENT = {
     name: "Ghana Independence Day GALA 2027",
     date: new Date(2027, 2, 6, 18, 0, 0), // March 6 2027, 6:00 PM
 };
 
 // ── COUNTDOWN TIMER ──────────────────────────────────
-function pad(n) {
-    return String(n).padStart(2, '0');
-}
+function pad(n) { return String(n).padStart(2, '0'); }
 
 function updateCountdown() {
     const now  = new Date();
@@ -54,15 +50,14 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 // ── GET NOTIFIED MODAL — MAILCHIMP ───────────────────
-// Your Mailchimp embedded form action URL
 const MAILCHIMP_URL = 'https://gmail.us22.list-manage.com/subscribe/post?u=0f393d7af469c9798babf3f29&id=9734ce82ad&f_id=00e0c2e1f0';
 
-const notifyModal    = document.getElementById('notifyModal');
-const notifyBtn      = document.getElementById('notifyBtn');
-const modalClose     = document.getElementById('notifyModalClose');
-const notifyForm     = document.getElementById('notifyForm');
-const formState      = document.getElementById('notifyFormState');
-const successState   = document.getElementById('notifySuccessState');
+const notifyModal  = document.getElementById('notifyModal');
+const notifyBtn    = document.getElementById('notifyBtn');
+const modalClose   = document.getElementById('notifyModalClose');
+const notifyForm   = document.getElementById('notifyForm');
+const formState    = document.getElementById('notifyFormState');
+const successState = document.getElementById('notifySuccessState');
 
 function openNotifyModal() {
     notifyModal.classList.add('open');
@@ -89,26 +84,11 @@ function resetModal() {
     }
 }
 
-// Open
 notifyBtn.addEventListener('click', openNotifyModal);
-
-// Close — X button
 modalClose.addEventListener('click', closeNotifyModal);
-
-// Close — backdrop click
-notifyModal.addEventListener('click', (e) => {
-    if (e.target === notifyModal) closeNotifyModal();
-});
-
-// Close — Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && notifyModal.classList.contains('open')) closeNotifyModal();
-});
-
-// Reset form when modal finishes closing
-notifyModal.addEventListener('transitionend', () => {
-    if (!notifyModal.classList.contains('open')) resetModal();
-});
+notifyModal.addEventListener('click', (e) => { if (e.target === notifyModal) closeNotifyModal(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && notifyModal.classList.contains('open')) closeNotifyModal(); });
+notifyModal.addEventListener('transitionend', () => { if (!notifyModal.classList.contains('open')) resetModal(); });
 
 // ── FORM SUBMIT → MAILCHIMP ──────────────────────────
 notifyForm.addEventListener('submit', async (e) => {
@@ -123,7 +103,6 @@ notifyForm.addEventListener('submit', async (e) => {
     submitLabel.textContent = 'Signing you up...';
 
     try {
-        // Mailchimp requires a GET request with no-cors for browser submissions
         const params = new URLSearchParams({
             FNAME:     firstName,
             EMAIL:     email,
@@ -136,11 +115,8 @@ notifyForm.addEventListener('submit', async (e) => {
             mode: 'no-cors',
         });
 
-        // Show success (fetch with no-cors always resolves — Mailchimp receives it)
         formState.style.display    = 'none';
         successState.style.display = 'block';
-
-        // Auto-close after 3 seconds
         setTimeout(() => closeNotifyModal(), 3000);
 
     } catch (err) {

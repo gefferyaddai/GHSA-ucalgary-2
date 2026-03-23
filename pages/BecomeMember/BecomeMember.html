@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Become a Member — GHSA UCalgary</title>
+  <link rel="stylesheet" href="../home/NavBar.css">
+  <link rel="stylesheet" href="CSS/BecomeMember.css">
+  <link rel="stylesheet" href="../home/footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<!-- ── NAV ────────────────────────────────────────── -->
+<nav class="nav" id="mainNav">
+  <div class="wrap nav-inner">
+    <div class="brand">
+      <img src="../home/assets/oax-tech-logo.png" alt="GHSA Logo" />
+      <span>GHSA</span>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="../home/Home.html">Home</a>
+      <a href="../aboutUs/AboutUs.html">About Us</a>
+      <a href="../events/Events.html">Events</a>
+      <a href="../MTT/MTT.html">Meet Us</a>
+      <a href="../whyjoin/WhyJoin.html">Why Join</a>
+      <a href="../BecomeSponsor/BecomeSponser.html">Sponsor</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── PAGE ───────────────────────────────────────── -->
+<div class="bm-page">
+
+  <!-- Back button -->
+  <div class="bm-back-wrap">
+    <a href="../whyjoin/WhyJoin.html" class="bm-back-btn">
+      <i class="fa-solid fa-arrow-left"></i>
+      Go back
+    </a>
+  </div>
+
+  <!-- ── FORM STATE ──────────────────────────────── -->
+  <div class="bm-container" id="bmFormState">
+    <div class="bm-header">
+      <p class="section-label">Join Us</p>
+      <h1 class="bm-title">Become a Member</h1>
+      <p class="bm-subtitle">
+        Fill out the form below and we'll be in touch. Whether you want
+        to join as a member or get involved with the exec team — we'd
+        love to have you.
+      </p>
+    </div>
+
+    <form class="bm-form" id="bmForm">
+
+      <!-- Personal Info -->
+      <div class="bm-section-label">Personal Information</div>
+      <div class="bm-row">
+        <div class="bm-field">
+          <label for="bmFirstName">First Name <span class="req">*</span></label>
+          <input type="text" id="bmFirstName" placeholder="Jane" required>
+        </div>
+        <div class="bm-field">
+          <label for="bmLastName">Last Name <span class="req">*</span></label>
+          <input type="text" id="bmLastName" placeholder="Doe" required>
+        </div>
+      </div>
+      <div class="bm-field">
+        <label for="bmEmail">Email Address <span class="req">*</span></label>
+        <input type="email" id="bmEmail" placeholder="jane@ucalgary.ca" required>
+      </div>
+
+      <!-- Academic Info -->
+      <div class="bm-section-label">Academic Information</div>
+      <div class="bm-field">
+        <label for="bmSchool">Faculty / School <span class="req">*</span></label>
+        <select id="bmSchool" required>
+          <option value="" disabled selected>Select your faculty</option>
+          <option>Schulich School of Engineering</option>
+          <option>Haskayne School of Business</option>
+          <option>Faculty of Science</option>
+          <option>Faculty of Arts</option>
+          <option>Cumming School of Medicine</option>
+          <option>Faculty of Kinesiology</option>
+          <option>Faculty of Law</option>
+          <option>Faculty of Nursing</option>
+          <option>Faculty of Social Work</option>
+          <option>Faculty of Education</option>
+          <option>Faculty of Veterinary Medicine</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="bm-field">
+        <label for="bmMajor">Major / Program <span class="req">*</span></label>
+        <input type="text" id="bmMajor" placeholder="e.g. Computer Science" required>
+      </div>
+      <div class="bm-field">
+        <label for="bmYear">Year of Study <span class="req">*</span></label>
+        <select id="bmYear" required>
+          <option value="" disabled selected>Select your year</option>
+          <option>1st Year</option>
+          <option>2nd Year</option>
+          <option>3rd Year</option>
+          <option>4th Year</option>
+          <option>5th Year +</option>
+          <option>Graduate Student</option>
+        </select>
+      </div>
+
+      <!-- Membership Type -->
+      <div class="bm-section-label">How would you like to join?</div>
+      <div class="bm-checkbox-group">
+        <label class="bm-checkbox-card" id="memberCard">
+          <input type="checkbox" id="joinMember" name="joinType" value="member">
+          <div class="bm-checkbox-card-inner">
+            <i class="fa-solid fa-users"></i>
+            <div>
+              <strong>Join as a Member</strong>
+              <span>Be part of the GHSA community, attend events, and connect with fellow students.</span>
+            </div>
+          </div>
+        </label>
+
+        <label class="bm-checkbox-card" id="execCard">
+          <input type="checkbox" id="joinExec" name="joinType" value="exec">
+          <div class="bm-checkbox-card-inner">
+            <i class="fa-solid fa-star"></i>
+            <div>
+              <strong>Join the Exec Team</strong>
+              <span>Take on a leadership role and help shape the future of GHSA at UCalgary.</span>
+            </div>
+          </div>
+        </label>
+      </div>
+
+      <!-- Exec Team Section (conditional) -->
+      <div class="bm-exec-section" id="bmExecSection">
+        <div class="bm-section-label">
+          Exec Team Interest
+          <span class="bm-section-hint">Check all that apply</span>
+        </div>
+
+        <p class="bm-exec-question">Which team are you interested in joining?</p>
+
+        <div class="bm-exec-teams">
+          <label class="bm-team-check">
+            <input type="checkbox" name="execTeam" value="presidents">
+            <span>Presidents / VP</span>
+          </label>
+          <label class="bm-team-check">
+            <input type="checkbox" name="execTeam" value="external">
+            <span>External Affairs</span>
+          </label>
+          <label class="bm-team-check">
+            <input type="checkbox" name="execTeam" value="internal">
+            <span>Internal Affairs</span>
+          </label>
+          <label class="bm-team-check">
+            <input type="checkbox" name="execTeam" value="academics">
+            <span>Academics</span>
+          </label>
+          <label class="bm-team-check">
+            <input type="checkbox" name="execTeam" value="marketing">
+            <span>Marketing</span>
+          </label>
+          <label class="bm-team-check">
+            <input type="checkbox" name="execTeam" value="events">
+            <span>Events</span>
+          </label>
+          <label class="bm-team-check">
+            <input type="checkbox" name="execTeam" value="treasury">
+            <span>Treasury</span>
+          </label>
+        </div>
+
+        <div class="bm-field" style="margin-top: 24px;">
+          <label for="bmBio">Tell us about yourself <span class="req">*</span></label>
+          <textarea
+                  id="bmBio"
+                  placeholder="Tell us a bit about yourself — your skills, why you want to join the exec team, and what you'd bring to GHSA..."
+                  rows="5"
+          ></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="bm-submit-btn" id="bmSubmitBtn">
+        <i class="fa-solid fa-paper-plane"></i>
+        <span id="bmSubmitLabel">Submit Application</span>
+      </button>
+
+    </form>
+  </div>
+
+  <!-- ── SUCCESS STATE ───────────────────────────── -->
+  <div class="bm-container bm-success" id="bmSuccessState" style="display:none;">
+    <div class="bm-success-inner">
+      <div class="bm-success-icon">🎉</div>
+      <h2>Application Received!</h2>
+      <p>
+        Thank you for applying to join GHSA UCalgary. We've received
+        your application and will be in touch shortly.
+      </p>
+      <p class="bm-success-sub">
+        In the meantime, follow us on Instagram
+        <a href="https://www.instagram.com/ghsa_uofc/" target="_blank">@ghsa_uofc</a>
+        to stay up to date.
+      </p>
+      <a href="../home/Home.html" class="bm-home-btn">
+        <i class="fa-solid fa-house"></i>
+        Back to Home
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-socials">
+    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    <a href="https://www.instagram.com/ghsa_uofc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="mailto:ucalgaryghsa@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+    <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+  </div>
+  <div class="footer-divider"></div>
+  <p class="footer-text">© 2026 <span>GHSA UCalgary Chapter</span>. All Rights Reserved.</p>
+</footer>
+
+<script src="JS/BecomeMember.js"></script>
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+  const navToggle = document.getElementById('navToggle');
+  const navLinks  = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.classList.toggle('open', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.classList.remove('open');
+  }));
+</script>
+</body>
+</html>
