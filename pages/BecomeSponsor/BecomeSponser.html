@@ -91,21 +91,21 @@
                 </div>
             </div>
             <div class="sp-why-card">
-                <span class="sp-why-icon">🚀</span>
+                <span class="sp-why-icon"><i class="fa-solid fa-rocket"></i></i></span>
                 <div>
                     <h3>Support Student Growth</h3>
                     <p>Help students develop leadership skills, access networking opportunities with professionals, and build community among Ghanaian and African students.</p>
                 </div>
             </div>
             <div class="sp-why-card">
-                <span class="sp-why-icon">🌍</span>
+                <span class="sp-why-icon"><i class="fa-solid fa-globe"></i></span>
                 <div>
                     <h3>Build a Stronger Community</h3>
                     <p>Connect students with the Ghanaian diaspora, encourage mentorship and intergenerational support, and strengthen cultural representation on campus.</p>
                 </div>
             </div>
             <div class="sp-why-card">
-                <span class="sp-why-icon">🎉</span>
+                <span class="sp-why-icon"><i class="fa-solid fa-champagne-glasses"></i></span>
                 <div>
                     <h3>Enable Meaningful Events</h3>
                     <p>Fund Cultural Night, Ghana Independence Celebrations, Networking &amp; Career Events, Food Festivals, and community-building social events.</p>
@@ -193,7 +193,7 @@
             <div class="sp-tier bronze">
                 <div class="sp-tier-header">
                     <div class="sp-tier-dot"></div>
-                    <div class="sp-tier-name">🌟 Community Supporter</div>
+                    <div class="sp-tier-name"> Community Supporter</div>
                     <div class="sp-tier-price">$50 – $150</div>
                     <div class="sp-tier-desc">For those who want to show support for Ghanaian students.</div>
                 </div>
@@ -214,7 +214,7 @@
             <div class="sp-tier silver">
                 <div class="sp-tier-header">
                     <div class="sp-tier-dot"></div>
-                    <div class="sp-tier-name">⭐ Cultural Advocate</div>
+                    <div class="sp-tier-name"> Cultural Advocate</div>
                     <div class="sp-tier-price">$200 – $350</div>
                     <div class="sp-tier-desc">For those who want to be meaningfully recognized for their contribution.</div>
                 </div>
@@ -260,7 +260,7 @@
             <div class="sp-tier platinum">
                 <div class="sp-tier-header">
                     <div class="sp-tier-dot"></div>
-                    <div class="sp-tier-name">💎 Legacy Supporter</div>
+                    <div class="sp-tier-name"> Legacy Supporter</div>
                     <div class="sp-tier-price">$1,000+</div>
                     <div class="sp-tier-desc">For those committed to leaving a lasting mark on GHSA.</div>
                 </div>
@@ -297,7 +297,7 @@
             <div class="sp-contact-chips">
                 <div class="sp-contact-chip">
                     <i class="fa-regular fa-envelope"></i>
-                    <span><a href="mailto:ucalgaryghsa@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a></span>
+                    <span><a href="mailto:ucalgaryghsa@gmail.com">ucalgaryghsa@gmail.com</a></span>
                 </div>
                 <div class="sp-contact-chip">
                     <i class="fa-brands fa-instagram"></i>
@@ -327,10 +327,10 @@
                 <label for="spPackage">Support Level</label>
                 <select id="spPackage" name="package" required>
                     <option value="" disabled selected>Select a support level</option>
-                    <option value="community">🌟 Community Supporter — $50–$150</option>
-                    <option value="advocate">⭐ Cultural Advocate — $200–$350</option>
-                    <option value="champion">🌍 Community Champion — $400–$750</option>
-                    <option value="legacy">💎 Legacy Supporter — $1,000+</option>
+                    <option value="community"> Community Supporter — $50–$150</option>
+                    <option value="advocate"> Cultural Advocate — $200–$350</option>
+                    <option value="champion"> Community Champion — $400–$750</option>
+                    <option value="legacy"> Legacy Supporter — $1,000+</option>
                     <option value="other">Other / General Inquiry</option>
                 </select>
             </div>
@@ -366,32 +366,20 @@
     <p class="footer-text">© 2026 <span>GHSA UCalgary Chapter</span>. All Rights Reserved.</p>
 </footer>
 
-<script src="JS/BecomeSponser.js"></script>
+<script src="JS/BecomeSponsor.js"></script>
 <script>
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
     const navToggle = document.getElementById('navToggle');
     const navLinks  = document.getElementById('navLinks');
-
-    navToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
+    navToggle.addEventListener('click', () => {
         const isOpen = navLinks.classList.toggle('open');
         navToggle.classList.toggle('open', isOpen);
     });
-
     navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
-        if (window.innerWidth <= 860) {
-            navLinks.classList.remove('open');
-            navToggle.classList.remove('open');
-        }
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('open');
     }));
-
-    document.addEventListener('click', (e) => {
-        if (!nav.contains(e.target)) {
-            navLinks.classList.remove('open');
-            navToggle.classList.remove('open');
-        }
-    });
 </script>
 </body>
 </html>
