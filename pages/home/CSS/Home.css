@@ -153,12 +153,26 @@ body {
 /* ── WHAT WE OFFER ──────────────────────────────────── */
 .wwo-section {
     padding: 120px 64px;
-    background: var(--off-white);
+    background-image: url('../assets /landingpage-bg.jpg');
+    background-size: 100% auto;
+    background-position: center top;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.wwo-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(247, 247, 245, 0.55);
+    pointer-events: none;
 }
 
 .wwo-container {
     max-width: 1280px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .section-label {
@@ -558,6 +572,7 @@ body {
     .newsletter-container { grid-template-columns: 1fr; gap: 48px; }
     .newsletter-left { position: static; }
     .wwo-cards { grid-template-columns: 1fr 1fr; }
+    .wwo-section { background-attachment: scroll; }
 }
 
 @media (max-width: 768px) {
