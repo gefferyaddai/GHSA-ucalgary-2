@@ -214,6 +214,10 @@ body {
     display: block;
     transition: transform 0.45s ease;
 }
+.member-photo img.photo-geffery  { object-position: center 38%; }
+.member-photo img.photo-suad     { object-position: center 24%; }
+.member-photo img.photo-princess { object-position: center 20%; }
+.member-photo img.photo-afua     { object-position: center 26%; }
 
 .member-card:hover .member-photo img {
     transform: scale(1.05);
