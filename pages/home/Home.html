@@ -41,9 +41,12 @@
             muted
             loop
             playsinline
-            preload="auto"
+            webkit-playsinline
+            x5-playsinline
+            preload="metadata"
             poster="assets/landingpage-bg.jpg"
             class="bg-video"
+            id="heroVideo"
     >
         <source src="assets/home-bg-video.mp4" type="video/mp4" />
     </video>
@@ -194,6 +197,16 @@
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="./JS/Home.js"></script>
 <script>
+    // ── MOBILE VIDEO AUTOPLAY FALLBACK ────────────────
+    const heroVideo = document.getElementById('heroVideo');
+    if (heroVideo) {
+        const tryPlay = () => { heroVideo.muted = true; heroVideo.play().catch(() => {}); };
+        tryPlay();
+        document.addEventListener('touchstart', tryPlay, { once: true });
+        document.addEventListener('click', tryPlay, { once: true });
+        document.addEventListener('visibilitychange', () => { if (!document.hidden) tryPlay(); });
+    }
+
     // ── NAV SCROLL SHRINK ──────────────────────────────
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => {
