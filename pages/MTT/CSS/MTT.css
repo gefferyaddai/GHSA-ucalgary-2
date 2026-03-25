@@ -220,6 +220,8 @@ body {
 .member-photo img.photo-afua     { object-position: center 26%; }
 .member-photo img.photo-veronica  { object-position: center 48%; }
 .member-photo img.photo-shannon  { object-position: center 48%; }
+.member-photo img.photo-condi  { object-position: center 48%; }
+
 
 
 .member-card:hover .member-photo img {
