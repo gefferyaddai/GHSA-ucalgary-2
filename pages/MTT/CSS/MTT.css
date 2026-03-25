@@ -218,6 +218,7 @@ body {
 .member-photo img.photo-suad     { object-position: center 24%; }
 .member-photo img.photo-princess { object-position: center 20%; }
 .member-photo img.photo-afua     { object-position: center 26%; }
+.member-photo img.photo-veronica  { object-position: center 48%; }
 
 .member-card:hover .member-photo img {
     transform: scale(1.05);
