@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sponsor Dashboard — GHSA UCalgary</title>
+  <link rel="stylesheet" href="../../home/NavBar.css">
+  <link rel="stylesheet" href="../../home/footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green:       #006b3f;
+      --green-light: #008c52;
+      --gold:        #fcd116;
+      --red:         #ce1126;
+      --black:       #0a0a0a;
+      --off-white:   #f7f7f5;
+      --white:       #ffffff;
+      --grey-100:    #f2f2f0;
+      --grey-200:    #e4e4e0;
+      --grey-400:    #999990;
+      --grey-700:    #444440;
+      --text:        #111110;
+      --radius-sm:   12px;
+      --radius-md:   20px;
+      --radius-lg:   32px;
+      --radius-pill: 999px;
+      --shadow-sm:   0 2px 8px rgba(0,0,0,0.06);
+      --shadow-md:   0 8px 24px rgba(0,0,0,0.08);
+      --shadow-lg:   0 20px 48px rgba(0,0,0,0.10);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--off-white);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── SECTION LABEL ──────────────────────────────── */
+    .section-label {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 14px;
+    }
+    .section-label::before {
+      content: ''; display: block; width: 24px; height: 2px;
+      background: var(--green); border-radius: 2px;
+    }
+
+    /* ── DASHBOARD LAYOUT ───────────────────────────── */
+    .dash-page {
+      flex: 1;
+      padding: 120px 64px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* ── WELCOME HEADER ─────────────────────────────── */
+    .dash-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .dash-header h1 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+    }
+
+    .dash-header-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .dash-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: var(--radius-pill);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1.5px solid var(--grey-200);
+      background: var(--white);
+      color: var(--text);
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+    .dash-btn:hover {
+      border-color: var(--green);
+      color: var(--green);
+    }
+    .dash-btn.primary {
+      background: var(--green);
+      border-color: var(--green);
+      color: var(--white);
+    }
+    .dash-btn.primary:hover {
+      background: var(--green-light);
+    }
+    .dash-btn.danger {
+      color: var(--red);
+      border-color: rgba(206,17,38,0.2);
+    }
+    .dash-btn.danger:hover {
+      background: rgba(206,17,38,0.06);
+      border-color: var(--red);
+    }
+
+    /* ── STAT CARDS ─────────────────────────────────── */
+    .dash-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .dash-stat-card {
+      background: var(--white);
+      border: 1px solid var(--grey-200);
+      border-radius: var(--radius-md);
+      padding: 24px 28px;
+    }
+
+    .dash-stat-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--grey-400);
+      margin-bottom: 8px;
+    }
+
+    .dash-stat-value {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .dash-stat-sub {
+      font-size: 0.8rem;
+      color: var(--grey-400);
+      margin-top: 4px;
+    }
+
+    /* ── SUBSCRIPTION BANNER ────────────────────────── */
+    .dash-sub-banner {
+      background: var(--white);
+      border: 1px solid var(--grey-200);
+      border-radius: var(--radius-md);
+      padding: 24px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .dash-sub-info h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .dash-sub-info p {
+      font-size: 0.85rem;
+      color: var(--grey-700);
+    }
+
+    .dash-sub-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .dash-sub-status.active {
+      background: rgba(0,107,63,0.1);
+      color: var(--green);
+    }
+    .dash-sub-status.canceled {
+      background: rgba(206,17,38,0.08);
+      color: var(--red);
+    }
+    .dash-sub-status.none {
+      background: var(--grey-100);
+      color: var(--grey-400);
+    }
+
+    /* ── PAYMENT HISTORY TABLE ──────────────────────── */
+    .dash-section-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .dash-section-title i {
+      color: var(--green);
+    }
+
+    .dash-table-wrap {
+      background: var(--white);
+      border: 1px solid var(--grey-200);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+
+    .dash-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .dash-table th {
+      background: var(--grey-100);
+      padding: 14px 20px;
+      text-align: left;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--grey-400);
+      border-bottom: 1px solid var(--grey-200);
+    }
+
+    .dash-table td {
+      padding: 16px 20px;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--grey-100);
+      color: var(--grey-700);
+    }
+
+    .dash-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .dash-table .amount {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .dash-table .status-badge {
+      display: inline-flex;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .status-badge.succeeded {
+      background: rgba(0,107,63,0.1);
+      color: var(--green);
+    }
+    .status-badge.failed {
+      background: rgba(206,17,38,0.08);
+      color: var(--red);
+    }
+    .status-badge.pending {
+      background: rgba(252,209,22,0.2);
+      color: #8a7200;
+    }
+
+    .receipt-link {
+      color: var(--green);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .receipt-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ── EMPTY STATE ────────────────────────────────── */
+    .dash-empty {
+      text-align: center;
+      padding: 64px 24px;
+      color: var(--grey-400);
+    }
+    .dash-empty i {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      color: var(--grey-200);
+    }
+    .dash-empty p {
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    /* ── LOADING ────────────────────────────────────── */
+    .dash-loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 24px;
+      gap: 16px;
+      color: var(--grey-400);
+    }
+
+    .spinner {
+      width: 32px; height: 32px;
+      border: 3px solid var(--grey-200);
+      border-top-color: var(--green);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── AUTH GATE (shown when not logged in) ─────── */
+    .dash-auth-gate {
+      text-align: center;
+      padding: 120px 24px;
+    }
+    .dash-auth-gate h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .dash-auth-gate p {
+      font-size: 0.95rem;
+      color: var(--grey-700);
+      margin-bottom: 28px;
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 768px) {
+      .dash-page { padding: 100px 20px 60px; }
+      .dash-stats { grid-template-columns: 1fr; }
+      .dash-table-wrap { overflow-x: auto; }
+      .dash-table { min-width: 560px; }
+      .dash-sub-banner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ────────────────────────────────────────── -->
+<nav class="nav" id="mainNav">
+  <div class="wrap nav-inner">
+    <div class="brand">
+      <img src="../../home/assets/oax-tech-logo.png" alt="GHSA Logo" />
+      <span>GHSA</span>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="../../home/Home.html">Home</a>
+      <a href="../../aboutUs/AboutUs.html">About Us</a>
+      <a href="../../events/Events.html">Events</a>
+      <a href="../../MTT/MTT.html">Meet Us</a>
+      <a href="../../whyjoin/WhyJoin.html">Why Join</a>
+      <a href="../BecomeSponser.html">Sponsor</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── MAIN CONTENT ──────────────────────────────── -->
+<main class="dash-page" id="dashPage">
+
+  <!-- Loading state (shown first) -->
+  <div class="dash-loading" id="dashLoading">
+    <div class="spinner"></div>
+    <p>Loading your dashboard...</p>
+  </div>
+
+  <!-- Auth gate (shown if not logged in) -->
+  <div class="dash-auth-gate" id="dashAuthGate" style="display:none;">
+    <p class="section-label" style="justify-content:center;">Sponsor Dashboard</p>
+    <h2>Sign in to view your dashboard</h2>
+    <p>You need to be logged in to access your sponsorship details.</p>
+    <a href="../SponsorAuth/sponsorAuth.html" class="dash-btn primary" style="display:inline-flex;">
+      <i class="fa-solid fa-right-to-bracket"></i> Sign In
+    </a>
+  </div>
+
+  <!-- Dashboard content (shown when logged in + data loaded) -->
+  <div id="dashContent" style="display:none;">
+
+    <!-- Header -->
+    <div class="dash-header">
+      <div>
+        <p class="section-label">Sponsor Dashboard</p>
+        <h1 id="dashGreeting">Welcome back</h1>
+      </div>
+      <div class="dash-header-actions">
+        <a href="../BecomeSponser.html" class="dash-btn">
+          <i class="fa-solid fa-plus"></i> New Donation
+        </a>
+        <button class="dash-btn" id="manageSubBtn">
+          <i class="fa-solid fa-credit-card"></i> Manage Subscription
+        </button>
+        <button class="dash-btn danger" id="signOutBtn">
+          <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+        </button>
+      </div>
+    </div>
+
+    <!-- Stat cards -->
+    <div class="dash-stats">
+      <div class="dash-stat-card">
+        <div class="dash-stat-label">Total Donated</div>
+        <div class="dash-stat-value" id="statTotal">$0.00</div>
+        <div class="dash-stat-sub">All time</div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-label">Donations</div>
+        <div class="dash-stat-value" id="statCount">0</div>
+        <div class="dash-stat-sub">Successful payments</div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-label">Sponsor Since</div>
+        <div class="dash-stat-value" id="statSince">—</div>
+        <div class="dash-stat-sub">First donation</div>
+      </div>
+    </div>
+
+    <!-- Subscription banner (shown only for subscribers) -->
+    <div class="dash-sub-banner" id="subBanner" style="display:none;">
+      <div class="dash-sub-info">
+        <h3>
+          <span class="dash-sub-status active" id="subStatus">Active</span>
+          Monthly Sponsorship
+        </h3>
+        <p id="subDetails">$0.00 CAD/month — renews on —</p>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="dash-btn" id="portalBtn">
+          <i class="fa-solid fa-gear"></i> Manage
+        </button>
+      </div>
+    </div>
+
+    <!-- Payment history -->
+    <h3 class="dash-section-title">
+      <i class="fa-solid fa-clock-rotate-left"></i> Payment History
+    </h3>
+
+    <div class="dash-table-wrap" id="historyWrap">
+      <table class="dash-table">
+        <thead>
+        <tr>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Receipt</th>
+        </tr>
+        </thead>
+        <tbody id="historyBody">
+        <!-- Rows populated by JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Empty state (shown when no payments) -->
+    <div class="dash-empty" id="dashEmpty" style="display:none;">
+      <i class="fa-solid fa-receipt"></i>
+      <p>No payment history yet.</p>
+      <a href="../BecomeSponser.html" class="dash-btn primary" style="display:inline-flex;">
+        <i class="fa-solid fa-heart"></i> Make Your First Donation
+      </a>
+    </div>
+  </div>
+</main>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-socials">
+    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    <a href="https://www.instagram.com/ghsa_uofc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="/cdn-cgi/l/email-protection#3b4e585a575c5a49425c53485a7b5c565a525715585456" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+    <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+  </div>
+  <div class="footer-divider"></div>
+  <p class="footer-text">© 2026 <span>GHSA UCalgary Chapter</span>. All Rights Reserved.</p>
+</footer>
+
+<!-- ── CLERK SDK ──────────────────────────────────── -->
+<script
+        defer
+        crossorigin="anonymous"
+        src="https://rational-manatee-68.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js"
+        type="text/javascript">
+</script>
+<script
+        defer
+        crossorigin="anonymous"
+        data-clerk-publishable-key="pk_test_cmF0aW9uYWwtbWFuYXRlZS02OC5jbGVyay5hY2NvdW50cy5kZXYk"
+        src="https://rational-manatee-68.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js"
+        type="text/javascript">
+</script>
+
+<script>
+  // ── Helpers ──────────────────────────────────────
+  function formatCurrency(cents, currency = 'cad') {
+    return new Intl.NumberFormat('en-CA', {
+      style: 'currency',
+      currency: currency.toUpperCase(),
+    }).format(cents / 100);
+  }
+
+  function formatDate(timestamp) {
+    return new Date(timestamp * 1000).toLocaleDateString('en-CA', {
+      year: 'numeric', month: 'short', day: 'numeric'
+    });
+  }
+
+  function formatDateShort(timestamp) {
+    return new Date(timestamp * 1000).toLocaleDateString('en-CA', {
+      year: 'numeric', month: 'short'
+    });
+  }
+
+  // ── Initialize ──────────────────────────────────
+  window.addEventListener('load', async () => {
+    try {
+      await window.Clerk.load();
+
+      const loading = document.getElementById('dashLoading');
+      loading.style.display = 'none';
+
+      if (!window.Clerk.user) {
+        // Not logged in → show auth gate
+        document.getElementById('dashAuthGate').style.display = 'block';
+        return;
+      }
+
+      // User is logged in → show dashboard
+      document.getElementById('dashContent').style.display = 'block';
+
+      const user = window.Clerk.user;
+      const email = user.primaryEmailAddress?.emailAddress;
+      const firstName = user.firstName || 'Sponsor';
+
+      document.getElementById('dashGreeting').textContent = `Welcome back, ${firstName}`;
+
+      // Fetch payment data from our API
+      await loadDashboardData(email);
+
+      // Wire up buttons
+      document.getElementById('signOutBtn').addEventListener('click', async () => {
+        await window.Clerk.signOut();
+        window.location.href = '../../home/Home.html';
+      });
+
+      document.getElementById('manageSubBtn').addEventListener('click', () => openPortal(email));
+      document.getElementById('portalBtn')?.addEventListener('click', () => openPortal(email));
+
+    } catch (err) {
+      console.error('Dashboard init error:', err);
+      document.getElementById('dashLoading').innerHTML = `
+                <i class="fa-solid fa-exclamation-triangle" style="font-size:1.5rem;color:var(--red);"></i>
+                <p>Could not load dashboard. Please refresh.</p>
+            `;
+    }
+  });
+
+  // ── Load data from /api/donor-history ────────────
+  async function loadDashboardData(email) {
+    try {
+      const res = await fetch('/api/donor-history', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ customerEmail: email }),
+      });
+
+      const data = await res.json();
+
+      if (!data.customer || data.payments.length === 0) {
+        // No Stripe history
+        document.getElementById('historyWrap').style.display = 'none';
+        document.getElementById('dashEmpty').style.display = 'block';
+        return;
+      }
+
+      // ── Populate stats ──────────────────────────
+      const successfulPayments = data.payments.filter(p => p.status === 'succeeded');
+
+      document.getElementById('statTotal').textContent = formatCurrency(data.totalDonated);
+      document.getElementById('statCount').textContent = successfulPayments.length;
+
+      if (successfulPayments.length > 0) {
+        const earliest = successfulPayments[successfulPayments.length - 1];
+        document.getElementById('statSince').textContent = formatDateShort(earliest.date);
+      }
+
+      // ── Subscription banner ─────────────────────
+      const activeSub = data.subscriptions.find(s => s.status === 'active');
+      if (activeSub) {
+        document.getElementById('subBanner').style.display = 'flex';
+        const renewDate = formatDate(activeSub.current_period_end);
+        document.getElementById('subDetails').textContent =
+                `${formatCurrency(activeSub.amount, activeSub.currency)}/${activeSub.interval} — renews ${renewDate}`;
+
+        if (activeSub.cancel_at_period_end) {
+          const statusEl = document.getElementById('subStatus');
+          statusEl.textContent = 'Canceling';
+          statusEl.className = 'dash-sub-status canceled';
+          document.getElementById('subDetails').textContent =
+                  `${formatCurrency(activeSub.amount, activeSub.currency)}/${activeSub.interval} — ends ${renewDate}`;
+        }
+      }
+
+      // ── Payment history table ───────────────────
+      const tbody = document.getElementById('historyBody');
+      tbody.innerHTML = '';
+
+      data.payments.forEach(payment => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+                    <td>${formatDate(payment.date)}</td>
+                    <td>${payment.description} <span style="font-size:0.75rem;color:var(--grey-400);margin-left:4px;">${payment.type === 'subscription' ? '(monthly)' : '(one-time)'}</span></td>
+                    <td class="amount">${formatCurrency(payment.amount, payment.currency)}</td>
+                    <td><span class="status-badge ${payment.status}">${payment.status}</span></td>
+                    <td>${payment.receipt_url
+                ? `<a href="${payment.receipt_url}" target="_blank" class="receipt-link"><i class="fa-solid fa-download"></i> Receipt</a>`
+                : '—'
+        }</td>
+                `;
+        tbody.appendChild(row);
+      });
+
+    } catch (err) {
+      console.error('Failed to load data:', err);
+      document.getElementById('historyWrap').style.display = 'none';
+      document.getElementById('dashEmpty').style.display = 'block';
+    }
+  }
+
+  // ── Open Stripe Customer Portal ─────────────────
+  async function openPortal(email) {
+    const btn = event.currentTarget;
+    btn.disabled = true;
+    const originalHTML = btn.innerHTML;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Opening...';
+
+    try {
+      const res = await fetch('/api/create-portal-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ customerEmail: email }),
+      });
+
+      const data = await res.json();
+
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert(data.error || 'Could not open subscription manager. You may not have an active subscription.');
+        btn.disabled = false;
+        btn.innerHTML = originalHTML;
+      }
+    } catch (err) {
+      console.error('Portal error:', err);
+      alert('Something went wrong. Please try again.');
+      btn.disabled = false;
+      btn.innerHTML = originalHTML;
+    }
+  }
+
+  // ── Navbar ───────────────────────────────────────
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+  const navToggle = document.getElementById('navToggle');
+  const navLinks  = document.getElementById('navLinks');
+  navToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.classList.toggle('open', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
+    if (window.innerWidth <= 860) {
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('open');
+    }
+  }));
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target)) {
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>

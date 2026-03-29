@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Account — GHSA UCalgary</title>
+    <link rel="stylesheet" href="../../home/NavBar.css">
+    <link rel="stylesheet" href="../../home/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ── TOKENS ─────────────────────────────────────── */
+        :root {
+            --green:       #006b3f;
+            --green-light: #008c52;
+            --gold:        #fcd116;
+            --red:         #ce1126;
+            --black:       #0a0a0a;
+            --off-white:   #f7f7f5;
+            --white:       #ffffff;
+            --grey-100:    #f2f2f0;
+            --grey-200:    #e4e4e0;
+            --grey-400:    #999990;
+            --grey-700:    #444440;
+            --text:        #111110;
+            --radius-sm:   12px;
+            --radius-md:   20px;
+            --radius-lg:   32px;
+            --radius-pill: 999px;
+            --shadow-sm:   0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md:   0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--off-white);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ── AUTH PAGE LAYOUT ───────────────────────────── */
+        .auth-page {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 24px 80px;
+        }
+
+        .auth-container {
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .auth-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--green);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin: 0 auto 24px;
+        }
+
+        .auth-title {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .auth-sub {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--grey-700);
+            margin-bottom: 36px;
+        }
+
+        /* ── PAYMENT SUCCESS BANNER ─────────────────────── */
+        .auth-success-banner {
+            background: rgba(0, 107, 63, 0.08);
+            border: 1px solid rgba(0, 107, 63, 0.2);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-align: left;
+        }
+
+        .auth-success-banner i {
+            color: var(--green);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .auth-success-banner p {
+            font-size: 0.875rem;
+            color: var(--green);
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .auth-success-banner span {
+            font-weight: 400;
+            color: var(--grey-700);
+        }
+
+        /* ── CLERK MOUNT POINT ──────────────────────────── */
+        #clerk-auth {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+        }
+
+        /* ── ONE-TIME SKIP OPTION ───────────────────────── */
+        .auth-skip {
+            margin-top: 24px;
+            font-size: 0.85rem;
+            color: var(--grey-400);
+        }
+
+        .auth-skip a {
+            color: var(--grey-700);
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .auth-skip a:hover {
+            color: var(--green);
+        }
+
+        /* ── LOADING STATE ──────────────────────────────── */
+        .auth-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            padding: 48px 0;
+            color: var(--grey-400);
+            font-size: 0.9rem;
+        }
+
+        .auth-loading .spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid var(--grey-200);
+            border-top-color: var(--green);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ── SECTION LABEL ──────────────────────────────── */
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--green);
+            margin-bottom: 14px;
+        }
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--green);
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .auth-page { padding: 100px 20px 60px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── NAV ────────────────────────────────────────── -->
+<nav class="nav" id="mainNav">
+    <div class="wrap nav-inner">
+        <div class="brand">
+            <img src="../../home/assets/oax-tech-logo.png" alt="GHSA Logo" />
+            <span>GHSA</span>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links" id="navLinks">
+            <a href="../../home/Home.html">Home</a>
+            <a href="../../aboutUs/AboutUs.html">About Us</a>
+            <a href="../../events/Events.html">Events</a>
+            <a href="../../MTT/MTT.html">Meet Us</a>
+            <a href="../../whyjoin/WhyJoin.html">Why Join</a>
+            <a href="../BecomeSponser.html">Sponsor</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ── AUTH SECTION ───────────────────────────────── -->
+<section class="auth-page">
+    <div class="auth-container">
+        <div class="auth-icon">
+            <i class="fa-solid fa-user-plus"></i>
+        </div>
+
+        <p class="section-label" style="justify-content:center;">Sponsor Account</p>
+        <h1 class="auth-title">Create your sponsor account</h1>
+        <p class="auth-sub">
+            Sign up to access your sponsor dashboard — view payment history,
+            download tax receipts, and manage your monthly sponsorship.
+        </p>
+
+        <!-- Payment success banner (shown when redirected from Stripe) -->
+        <div class="auth-success-banner" id="successBanner" style="display:none;">
+            <i class="fa-solid fa-circle-check"></i>
+            <p>
+                Payment successful! Thank you for your generosity.
+                <br><span>Create an account below to access your dashboard.</span>
+            </p>
+        </div>
+
+        <!-- Clerk mounts here -->
+        <div id="clerk-auth">
+            <div class="auth-loading" id="authLoading">
+                <div class="spinner"></div>
+                <p>Loading authentication...</p>
+            </div>
+        </div>
+
+        <!-- Skip option for one-time donors -->
+        <div class="auth-skip" id="skipSection" style="display:none;">
+            <p>Made a one-time donation? <a id="skipLink" href="../../home/Home.html">Skip and go home</a>
+                — your receipt was emailed by Stripe.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer class="footer">
+    <div class="footer-socials">
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/ghsa_uofc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="mailto:ucalgaryghsa@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+        <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+    </div>
+    <div class="footer-divider"></div>
+    <p class="footer-text">© 2026 <span>GHSA UCalgary Chapter</span>. All Rights Reserved.</p>
+</footer>
+
+<!-- ── CLERK SDK ──────────────────────────────────── -->
+<script
+        defer
+        crossorigin="anonymous"
+        src="https://rational-manatee-68.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js"
+        type="text/javascript">
+</script>
+<script
+        defer
+        crossorigin="anonymous"
+        data-clerk-publishable-key="pk_test_cmF0aW9uYWwtbWFuYXRlZS02OC5jbGVyay5hY2NvdW50cy5kZXYk"
+        src="https://rational-manatee-68.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js"
+        type="text/javascript">
+</script>
+
+<script>
+    // ── Parse URL params ─────────────────────────────
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get('session_id');
+    const donationType = params.get('type'); // 'monthly' or null
+
+    // Show success banner if coming from Stripe
+    if (sessionId) {
+        document.getElementById('successBanner').style.display = 'flex';
+        // Show skip option for one-time donors
+        if (donationType !== 'monthly') {
+            document.getElementById('skipSection').style.display = 'block';
+        }
+    }
+
+    // ── Initialize Clerk ─────────────────────────────
+    window.addEventListener('load', async () => {
+        try {
+            await window.Clerk.load();
+            const loading = document.getElementById('authLoading');
+            if (loading) loading.remove();
+
+            if (window.Clerk.user) {
+                // Already signed in → go to dashboard
+                const dashUrl = new URL('../SponsorDashboard/sponsorDashboard.html', window.location.href);
+                if (sessionId) dashUrl.searchParams.set('session_id', sessionId);
+                window.location.href = dashUrl.toString();
+            } else {
+                // Mount sign-up component
+                window.Clerk.mountSignUp(document.getElementById('clerk-auth'), {
+                    afterSignUpUrl: buildDashboardUrl(),
+                    afterSignInUrl: buildDashboardUrl(),
+                    appearance: {
+                        variables: {
+                            colorPrimary: '#006b3f',
+                            borderRadius: '12px',
+                            fontFamily: '"DM Sans", sans-serif',
+                        },
+                    },
+                });
+            }
+        } catch (err) {
+            console.error('Clerk init error:', err);
+            const loading = document.getElementById('authLoading');
+            if (loading) {
+                loading.innerHTML = `
+                    <i class="fa-solid fa-exclamation-triangle" style="font-size:1.5rem;color:var(--red);"></i>
+                    <p>Could not load authentication. Please refresh or try again later.</p>
+                `;
+            }
+        }
+    });
+
+    function buildDashboardUrl() {
+        let url = '../SponsorDashboard/sponsorDashboard.html';
+        if (sessionId) url += `?session_id=${sessionId}`;
+        return url;
+    }
+
+    // ── Navbar (same fix as all pages) ───────────────
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+    const navToggle = document.getElementById('navToggle');
+    const navLinks  = document.getElementById('navLinks');
+    navToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = navLinks.classList.toggle('open');
+        navToggle.classList.toggle('open', isOpen);
+    });
+    navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
+        if (window.innerWidth <= 860) {
+            navLinks.classList.remove('open');
+            navToggle.classList.remove('open');
+        }
+    }));
+    document.addEventListener('click', (e) => {
+        if (!nav.contains(e.target)) {
+            navLinks.classList.remove('open');
+            navToggle.classList.remove('open');
+        }
+    });
+</script>
+</body>
+</html>
