@@ -269,8 +269,6 @@
 </footer>
 
 <!-- ── CLERK SDK ──────────────────────────────────── -->
-<script src="https://rational-manatee-68.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js"></script>
-
 <script>
     // ── Parse URL params ─────────────────────────────
     const params = new URLSearchParams(window.location.search);
@@ -284,8 +282,10 @@
         }
     }
 
-    // ── Initialize Clerk ─────────────────────────────
-    (async () => {
+    // ── Load Clerk from npm CDN and initialize ───────
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/@clerk/clerk-js@5/dist/clerk.browser.js';
+    script.addEventListener('load', async () => {
         try {
             const clerk = new window.Clerk('pk_test_cmF0aW9uYWwtbWFuYXRlZS02OC5jbGVyay5hY2NvdW50cy5kZXYk');
             await clerk.load();
@@ -298,8 +298,7 @@
                 if (sessionId) dashUrl.searchParams.set('session_id', sessionId);
                 window.location.href = dashUrl.toString();
             } else {
-                const signUpDiv = document.getElementById('clerk-auth');
-                clerk.mountSignUp(signUpDiv, {
+                clerk.mountSignUp(document.getElementById('clerk-auth'), {
                     afterSignUpUrl: buildDashboardUrl(),
                     afterSignInUrl: buildDashboardUrl(),
                     appearance: {
@@ -318,7 +317,8 @@
                 loading.innerHTML = '<i class="fa-solid fa-exclamation-triangle" style="font-size:1.5rem;color:var(--red);"></i><p>Could not load authentication. Please refresh or try again later.</p>';
             }
         }
-    })();
+    });
+    document.body.appendChild(script);
 
     function buildDashboardUrl() {
         let url = '../SponsorDashboard/sponsorDashboard.html';
