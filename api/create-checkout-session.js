@@ -30,7 +30,6 @@ module.exports = async (req, res) => {
                 recurring: { interval: 'month' },
                 product_data: {
                     name: 'GHSA Monthly Sponsorship',
-                    description: `$${(amount / 100).toFixed(2)} CAD/month — GHSA UCalgary`,
                 },
             });
 
@@ -59,7 +58,6 @@ module.exports = async (req, res) => {
                         currency,
                         product_data: {
                             name: 'GHSA One-Time Sponsorship',
-                            description: `$${(amount / 100).toFixed(2)} CAD — GHSA UCalgary`,
                         },
                         unit_amount: amount,
                     },
