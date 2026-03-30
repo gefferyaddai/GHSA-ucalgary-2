@@ -198,8 +198,8 @@
 <nav class="nav" id="mainNav">
     <div class="wrap nav-inner">
         <div class="brand">
-            <img src="../../home/assets/oax-tech-logo.png" alt="GHSA Logo" />
-            <span>GHSA</span>
+            <img src="../../home/assets/ghsa-logo.JPG" alt="GHSA Logo" />
+            <span></span>
         </div>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
             <span></span><span></span><span></span>
@@ -261,7 +261,7 @@
         <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
         <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
         <a href="https://www.instagram.com/ghsa_uofc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="mailto:ucalgaryghsa@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+        <a href="/cdn-cgi/l/email-protection#017462606d666073786669726041666c60686d2f626e6c" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
         <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
     </div>
     <div class="footer-divider"></div>
@@ -270,48 +270,39 @@
 
 <!-- ── CLERK SDK ──────────────────────────────────── -->
 <script
-        defer
-        crossorigin="anonymous"
-        src="https://rational-manatee-68.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js"
-        type="text/javascript">
-</script>
-<script
-        defer
+        async
         crossorigin="anonymous"
         data-clerk-publishable-key="pk_test_cmF0aW9uYWwtbWFuYXRlZS02OC5jbGVyay5hY2NvdW50cy5kZXYk"
         src="https://rational-manatee-68.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js"
-        type="text/javascript">
+        type="text/javascript"
+        onload="initClerk()">
 </script>
 
 <script>
     // ── Parse URL params ─────────────────────────────
     const params = new URLSearchParams(window.location.search);
     const sessionId = params.get('session_id');
-    const donationType = params.get('type'); // 'monthly' or null
+    const donationType = params.get('type');
 
-    // Show success banner if coming from Stripe
     if (sessionId) {
         document.getElementById('successBanner').style.display = 'flex';
-        // Show skip option for one-time donors
         if (donationType !== 'monthly') {
             document.getElementById('skipSection').style.display = 'block';
         }
     }
 
-    // ── Initialize Clerk ─────────────────────────────
-    window.addEventListener('load', async () => {
+    // ── Initialize Clerk (called when SDK loads) ─────
+    async function initClerk() {
         try {
             await window.Clerk.load();
             const loading = document.getElementById('authLoading');
             if (loading) loading.remove();
 
             if (window.Clerk.user) {
-                // Already signed in → go to dashboard
                 const dashUrl = new URL('../SponsorDashboard/sponsorDashboard.html', window.location.href);
                 if (sessionId) dashUrl.searchParams.set('session_id', sessionId);
                 window.location.href = dashUrl.toString();
             } else {
-                // Mount sign-up component
                 window.Clerk.mountSignUp(document.getElementById('clerk-auth'), {
                     afterSignUpUrl: buildDashboardUrl(),
                     afterSignInUrl: buildDashboardUrl(),
@@ -328,21 +319,18 @@
             console.error('Clerk init error:', err);
             const loading = document.getElementById('authLoading');
             if (loading) {
-                loading.innerHTML = `
-                    <i class="fa-solid fa-exclamation-triangle" style="font-size:1.5rem;color:var(--red);"></i>
-                    <p>Could not load authentication. Please refresh or try again later.</p>
-                `;
+                loading.innerHTML = '<i class="fa-solid fa-exclamation-triangle" style="font-size:1.5rem;color:var(--red);"></i><p>Could not load authentication. Please refresh or try again later.</p>';
             }
         }
-    });
+    }
 
     function buildDashboardUrl() {
         let url = '../SponsorDashboard/sponsorDashboard.html';
-        if (sessionId) url += `?session_id=${sessionId}`;
+        if (sessionId) url += '?session_id=' + sessionId;
         return url;
     }
 
-    // ── Navbar (same fix as all pages) ───────────────
+    // ── Navbar ───────────────────────────────────────
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
     const navToggle = document.getElementById('navToggle');
