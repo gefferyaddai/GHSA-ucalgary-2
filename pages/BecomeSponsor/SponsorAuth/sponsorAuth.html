@@ -269,6 +269,14 @@
 </footer>
 
 <!-- ── CLERK SDK ──────────────────────────────────── -->
+<script
+        async
+        crossorigin="anonymous"
+        data-clerk-publishable-key="pk_test_cmF0aW9uYWwtbWFuYXRlZS02OC5jbGVyay5hY2NvdW50cy5kZXYk"
+        src="https://rational-manatee-68.clerk.accounts.dev/npm/@clerk/clerk-js@5/dist/clerk.browser.js"
+        type="text/javascript"
+></script>
+
 <script>
     // ── Parse URL params ─────────────────────────────
     const params = new URLSearchParams(window.location.search);
@@ -282,23 +290,19 @@
         }
     }
 
-    // ── Load Clerk from npm CDN and initialize ───────
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/@clerk/clerk-js@5/dist/clerk.browser.js';
-    script.addEventListener('load', async () => {
+    // ── Initialize Clerk after SDK loads ─────────────
+    window.addEventListener('load', async () => {
         try {
-            const clerk = new window.Clerk('pk_test_cmF0aW9uYWwtbWFuYXRlZS02OC5jbGVyay5hY2NvdW50cy5kZXYk');
-            await clerk.load();
-
+            await window.Clerk.load();
             const loading = document.getElementById('authLoading');
             if (loading) loading.remove();
 
-            if (clerk.user) {
+            if (window.Clerk.user) {
                 const dashUrl = new URL('../SponsorDashboard/sponsorDashboard.html', window.location.href);
                 if (sessionId) dashUrl.searchParams.set('session_id', sessionId);
                 window.location.href = dashUrl.toString();
             } else {
-                clerk.mountSignUp(document.getElementById('clerk-auth'), {
+                window.Clerk.mountSignUp(document.getElementById('clerk-auth'), {
                     afterSignUpUrl: buildDashboardUrl(),
                     afterSignInUrl: buildDashboardUrl(),
                     appearance: {
@@ -318,7 +322,6 @@
             }
         }
     });
-    document.body.appendChild(script);
 
     function buildDashboardUrl() {
         let url = '../SponsorDashboard/sponsorDashboard.html';
