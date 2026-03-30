@@ -298,9 +298,9 @@
             if (loading) loading.remove();
 
             if (window.Clerk.user) {
-                const dashUrl = new URL('../SponsorDashboard/sponsorDashboard.html', window.location.href);
-                if (sessionId) dashUrl.searchParams.set('session_id', sessionId);
-                window.location.href = dashUrl.toString();
+                let dashUrl = '/pages/BecomeSponsor/SponsorDashboard/sponsorDashboard.html';
+                if (sessionId) dashUrl += '?session_id=' + sessionId;
+                window.location.href = dashUrl;
             } else {
                 window.Clerk.mountSignUp(document.getElementById('clerk-auth'), {
                     afterSignUpUrl: buildDashboardUrl(),
@@ -324,7 +324,7 @@
     });
 
     function buildDashboardUrl() {
-        let url = '../SponsorDashboard/sponsorDashboard.html';
+        let url = '/pages/BecomeSponsor/SponsorDashboard/sponsorDashboard.html';
         if (sessionId) url += '?session_id=' + sessionId;
         return url;
     }
