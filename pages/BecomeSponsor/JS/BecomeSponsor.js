@@ -4,7 +4,7 @@
 
 // ── STRIPE CONFIG ────────────────────────────────────
 // Replace with your actual Stripe publishable key
-const STRIPE_PUBLIC_KEY = 'pk_test_51THcoVArlGoBWXv8zlimAJT39zPT2pJizFjcgftlstQ6rbXUuUF3TKD173qzzjbFJ07o8ZyF3gXJ3nQW7Ddo5NMp00ZLQyfDoI';
+const STRIPE_PUBLIC_KEY = 'pk_live_51THcoVArlGoBWXv8RxNPoK4AXySapBwf602nbRvIEISnuPA5uQvaxgqeiQw6wcoywRxSbd8RteBN1HTka7kw4m3C000cgfZwOk';
 const stripe = Stripe(STRIPE_PUBLIC_KEY);
 
 // ── FREQUENCY TOGGLE (One-time / Monthly) ────────────
