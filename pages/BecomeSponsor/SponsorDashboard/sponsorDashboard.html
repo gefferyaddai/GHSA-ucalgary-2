@@ -504,6 +504,8 @@
   <p class="footer-text">© 2026 <span>GHSA UCalgary Chapter</span>. All Rights Reserved.</p>
 </footer>
 
+<script src="../../common.js"></script>
+
 <!-- ── CLERK SDK ──────────────────────────────────── -->
 <script
         defer
@@ -572,8 +574,8 @@
         window.location.href = '../../home/Home.html';
       });
 
-      document.getElementById('manageSubBtn').addEventListener('click', () => openPortal(email));
-      document.getElementById('portalBtn')?.addEventListener('click', () => openPortal(email));
+      document.getElementById('manageSubBtn').addEventListener('click', (e) => openPortal(email, e.currentTarget));
+      document.getElementById('portalBtn')?.addEventListener('click', (e) => openPortal(email, e.currentTarget));
 
     } catch (err) {
       console.error('Dashboard init error:', err);
@@ -657,8 +659,7 @@
   }
 
   // ── Open Stripe Customer Portal ─────────────────
-  async function openPortal(email) {
-    const btn = event.currentTarget;
+  async function openPortal(email, btn) {
     btn.disabled = true;
     const originalHTML = btn.innerHTML;
     btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Opening...';
@@ -675,40 +676,17 @@
       if (data.url) {
         window.location.href = data.url;
       } else {
-        alert(data.error || 'Could not open subscription manager. You may not have an active subscription.');
+        showToast(data.error || 'Could not open subscription manager. You may not have an active subscription.', 'error');
         btn.disabled = false;
         btn.innerHTML = originalHTML;
       }
     } catch (err) {
       console.error('Portal error:', err);
-      alert('Something went wrong. Please try again.');
+      showToast('Something went wrong. Please try again.', 'error');
       btn.disabled = false;
       btn.innerHTML = originalHTML;
     }
   }
-
-  // ── Navbar ───────────────────────────────────────
-  const nav = document.getElementById('mainNav');
-  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
-  const navToggle = document.getElementById('navToggle');
-  const navLinks  = document.getElementById('navLinks');
-  navToggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const isOpen = navLinks.classList.toggle('open');
-    navToggle.classList.toggle('open', isOpen);
-  });
-  navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
-    if (window.innerWidth <= 860) {
-      navLinks.classList.remove('open');
-      navToggle.classList.remove('open');
-    }
-  }));
-  document.addEventListener('click', (e) => {
-    if (!nav.contains(e.target)) {
-      navLinks.classList.remove('open');
-      navToggle.classList.remove('open');
-    }
-  });
 </script>
 </body>
 </html>
