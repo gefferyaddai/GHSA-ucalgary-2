@@ -48,12 +48,12 @@ function validateForm() {
     const joinExec   = document.getElementById('joinExec').checked;
 
     if (!firstName || !lastName || !email || !school || !major || !year) {
-        alert('Please fill in all required fields.');
+        showToast('Please fill in all required fields.', 'error');
         return false;
     }
 
     if (!joinMember && !joinExec) {
-        alert('Please select at least one option — Join as a Member or Join the Exec Team.');
+        showToast('Please select at least one option — Join as a Member or Join the Exec Team.', 'error');
         return false;
     }
 
@@ -61,11 +61,11 @@ function validateForm() {
         const selectedTeams = document.querySelectorAll('input[name="execTeam"]:checked');
         const bio = document.getElementById('bmBio').value.trim();
         if (selectedTeams.length === 0) {
-            alert('Please select at least one exec team you\'re interested in.');
+            showToast('Please select at least one exec team you\'re interested in.', 'error');
             return false;
         }
         if (!bio) {
-            alert('Please tell us about yourself in the text box.');
+            showToast('Please tell us about yourself in the text box.', 'error');
             return false;
         }
     }
@@ -120,6 +120,6 @@ bmForm.addEventListener('submit', async (e) => {
         console.error('Submission error:', err);
         submitBtn.disabled    = false;
         submitLabel.textContent = 'Submit Application';
-        alert('Something went wrong. Please email ucalgaryghsa@gmail.com directly.');
+        showToast('Something went wrong. Please email ucalgaryghsa@gmail.com directly.', 'error');
     }
 });

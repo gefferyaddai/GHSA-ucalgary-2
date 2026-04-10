@@ -90,7 +90,7 @@ document.getElementById('donateBtn').addEventListener('click', async () => {
         btn.disabled = false;
         const suffix = donationFrequency === 'monthly' ? '/mo' : '';
         btn.innerHTML = `<i class="fa-solid fa-heart"></i> <span id="donateBtnLabel">Donate $${selectedAmount}${suffix}</span>`;
-        alert('Something went wrong. Please try again or contact us directly at ucalgaryghsa@gmail.com');
+        showToast('Something went wrong. Please try again or contact us directly at ucalgaryghsa@gmail.com', 'error');
     }
 });
 
@@ -111,46 +111,6 @@ document.getElementById('donateBtn').addEventListener('click', async () => {
         window.history.replaceState({}, '', window.location.pathname);
     }
 })();
-
-function showToast(message, type = 'success') {
-    const toast = document.createElement('div');
-    toast.style.cssText = `
-        position: fixed;
-        top: 100px;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: 16px 28px;
-        border-radius: 12px;
-        font-family: 'DM Sans', sans-serif;
-        font-size: 0.9rem;
-        font-weight: 600;
-        z-index: 9999;
-        max-width: 500px;
-        text-align: center;
-        animation: toastIn 0.4s ease;
-        ${type === 'success'
-        ? 'background: #006b3f; color: white;'
-        : 'background: #444440; color: white;'}
-    `;
-    toast.textContent = message;
-
-    // Animation keyframes
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes toastIn {
-            from { opacity: 0; transform: translateX(-50%) translateY(-12px); }
-            to   { opacity: 1; transform: translateX(-50%) translateY(0); }
-        }
-    `;
-    document.head.appendChild(style);
-    document.body.appendChild(toast);
-
-    setTimeout(() => {
-        toast.style.transition = 'opacity 0.4s ease';
-        toast.style.opacity = '0';
-        setTimeout(() => toast.remove(), 400);
-    }, 5000);
-}
 
 // ── TIER SELECT — AUTO-FILL FORM ─────────────────────
 document.querySelectorAll('.sp-tier-btn').forEach(btn => {
@@ -207,6 +167,6 @@ document.getElementById('sponsorForm').addEventListener('submit', async (e) => {
         console.error('Form error:', err);
         submitBtn.disabled = false;
         submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Submit Inquiry';
-        alert('Something went wrong. Please email us directly at ucalgaryghsa@gmail.com');
+        showToast('Something went wrong. Please email us directly at ucalgaryghsa@gmail.com', 'error');
     }
 });
