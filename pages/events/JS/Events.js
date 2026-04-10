@@ -123,6 +123,6 @@ notifyForm.addEventListener('submit', async (e) => {
         console.error('Mailchimp error:', err);
         submitBtn.disabled = false;
         submitLabel.textContent = 'Notify Me';
-        alert('Something went wrong. Please email ucalgaryghsa@gmail.com to be added to the list.');
+        showToast('Something went wrong. Please email ucalgaryghsa@gmail.com to be added to the list.', 'error');
     }
 });

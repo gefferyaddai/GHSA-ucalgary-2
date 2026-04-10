@@ -67,7 +67,7 @@ if (newsletterForm) {
             console.error('Newsletter error:', err);
             newsletterBtn.disabled    = false;
             newsletterBtn.textContent = originalBtnText;
-            alert('Something went wrong. Please email ucalgaryghsa@gmail.com to subscribe.');
+            showToast('Something went wrong. Please email ucalgaryghsa@gmail.com to subscribe.', 'error');
         }
     });
 }

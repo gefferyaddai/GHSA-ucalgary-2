@@ -4,6 +4,11 @@ const nodemailer = require('nodemailer');
 
 const ALLOWED_ORIGIN = process.env.SITE_URL || 'https://ghsa.ca';
 
+function escapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+}
+
 module.exports = async (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', ALLOWED_ORIGIN);
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -41,20 +46,20 @@ module.exports = async (req, res) => {
         const execSection = joinExec
             ? `
 <h3>Exec Application Details</h3>
-<p><strong>Teams of Interest:</strong> ${(execTeams || []).join(', ') || 'None specified'}</p>
+<p><strong>Teams of Interest:</strong> ${(execTeams || []).map(escapeHtml).join(', ') || 'None specified'}</p>
 <p><strong>Bio / About Them:</strong></p>
-<blockquote>${bio || '—'}</blockquote>`
+<blockquote>${escapeHtml(bio) || '—'}</blockquote>`
             : '';
 
         const html = `
 <h2>New Membership Application — GHSA UCalgary</h2>
 <table cellpadding="6" cellspacing="0" style="border-collapse:collapse;">
-  <tr><td><strong>Name</strong></td><td>${firstName} ${lastName}</td></tr>
-  <tr><td><strong>Email</strong></td><td><a href="mailto:${email}">${email}</a></td></tr>
-  <tr><td><strong>School / Faculty</strong></td><td>${school}</td></tr>
-  <tr><td><strong>Major / Program</strong></td><td>${major}</td></tr>
-  <tr><td><strong>Year</strong></td><td>${year}</td></tr>
-  <tr><td><strong>Applying For</strong></td><td>${roles.join(', ')}</td></tr>
+  <tr><td><strong>Name</strong></td><td>${escapeHtml(firstName)} ${escapeHtml(lastName)}</td></tr>
+  <tr><td><strong>Email</strong></td><td><a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></td></tr>
+  <tr><td><strong>School / Faculty</strong></td><td>${escapeHtml(school)}</td></tr>
+  <tr><td><strong>Major / Program</strong></td><td>${escapeHtml(major)}</td></tr>
+  <tr><td><strong>Year</strong></td><td>${escapeHtml(year)}</td></tr>
+  <tr><td><strong>Applying For</strong></td><td>${roles.map(escapeHtml).join(', ')}</td></tr>
 </table>
 ${execSection}`;
 
