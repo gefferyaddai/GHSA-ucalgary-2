@@ -190,8 +190,7 @@ document.getElementById('sponsorForm').addEventListener('submit', async (e) => {
     };
 
     try {
-        // Replace with your Formspree endpoint or backend
-        const res = await fetch('YOUR_FORM_ENDPOINT', {
+        const res = await fetch('/api/submit-sponsor-inquiry', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),

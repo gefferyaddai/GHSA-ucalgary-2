@@ -2,9 +2,10 @@
 // Vercel Serverless Function — creates a Stripe Checkout session
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
+const ALLOWED_ORIGIN = process.env.SITE_URL || 'https://ghsa.ca';
+
 module.exports = async (req, res) => {
-    // CORS headers
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', ALLOWED_ORIGIN);
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
@@ -19,7 +20,7 @@ module.exports = async (req, res) => {
         }
 
         // Base URL for redirects
-        const baseUrl = process.env.SITE_URL || 'https://ghsa.vercel.app';
+        const baseUrl = process.env.SITE_URL || 'https://ghsa.ca';
 
         if (frequency === 'monthly') {
             // ── RECURRING (subscription) ─────────────────────

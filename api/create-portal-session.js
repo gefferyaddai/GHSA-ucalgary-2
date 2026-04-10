@@ -2,8 +2,10 @@
 // Vercel Serverless Function — opens Stripe Customer Portal for managing subscriptions
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
+const ALLOWED_ORIGIN = process.env.SITE_URL || 'https://ghsa.ca';
+
 module.exports = async (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', ALLOWED_ORIGIN);
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
@@ -25,7 +27,7 @@ module.exports = async (req, res) => {
         }
 
         const customer = customers.data[0];
-        const baseUrl = process.env.SITE_URL || 'https://ghsa.vercel.app';
+        const baseUrl = process.env.SITE_URL || 'https://ghsa.ca';
 
         const session = await stripe.billingPortal.sessions.create({
             customer: customer.id,

@@ -101,9 +101,7 @@ bmForm.addEventListener('submit', async (e) => {
     };
 
     try {
-        // Replace 'YOUR_FORM_ENDPOINT' with your actual endpoint
-        // Options: Formspree (https://formspree.io), EmailJS, or your own backend
-        const res = await fetch('YOUR_FORM_ENDPOINT', {
+        const res = await fetch('/api/submit-member-form', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
