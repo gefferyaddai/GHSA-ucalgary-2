@@ -205,12 +205,12 @@
             <span></span><span></span><span></span>
         </button>
         <div class="nav-links" id="navLinks">
-            <a href="../../home/Home.html">Home</a>
-            <a href="../../aboutUs/AboutUs.html">About Us</a>
-            <a href="../../events/Events.html">Events</a>
-            <a href="../../MTT/MTT.html">Meet Us</a>
-            <a href="../../whyjoin/WhyJoin.html">Why Join</a>
-            <a href="../BecomeSponser.html">Sponsor</a>
+            <a href="/home">Home</a>
+            <a href="/about">About Us</a>
+            <a href="/events">Events</a>
+            <a href="/mtt">Meet Us</a>
+            <a href="/join">Why Join</a>
+            <a href="/become-sponsor">Sponsor</a>
         </div>
     </div>
 </nav>
@@ -248,7 +248,7 @@
 
         <!-- Skip option for one-time donors -->
         <div class="auth-skip" id="skipSection" style="display:none;">
-            <p>Made a one-time donation? <a id="skipLink" href="../../home/Home.html">Skip and go home</a>
+            <p>Made a one-time donation? <a id="skipLink" href="/home">Skip and go home</a>
                 — your receipt was emailed by Stripe.</p>
         </div>
     </div>
@@ -330,7 +330,7 @@
     });
 
     function buildDashboardUrl() {
-        let url = '/pages/BecomeSponsor/SponsorDashboard/sponsorDashboard.html';
+        let url = '/sponsor-dashboard';
         if (sessionId) url += '?session_id=' + sessionId;
         return url;
     }

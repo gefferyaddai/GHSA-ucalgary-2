@@ -371,12 +371,12 @@
       <span></span><span></span><span></span>
     </button>
     <div class="nav-links" id="navLinks">
-      <a href="../../home/Home.html">Home</a>
-      <a href="../../aboutUs/AboutUs.html">About Us</a>
-      <a href="../../events/Events.html">Events</a>
-      <a href="../../MTT/MTT.html">Meet Us</a>
-      <a href="../../whyjoin/WhyJoin.html">Why Join</a>
-      <a href="../BecomeSponser.html">Sponsor</a>
+      <a href="/home">Home</a>
+      <a href="/about">About Us</a>
+      <a href="/events">Events</a>
+      <a href="/mtt">Meet Us</a>
+      <a href="/join">Why Join</a>
+      <a href="/become-sponsor">Sponsor</a>
     </div>
   </div>
 </nav>
@@ -395,7 +395,7 @@
     <p class="section-label" style="justify-content:center;">Sponsor Dashboard</p>
     <h2>Sign in to view your dashboard</h2>
     <p>You need to be logged in to access your sponsorship details.</p>
-    <a href="../SponsorAuth/sponsorAuth.html" class="dash-btn primary" style="display:inline-flex;">
+    <a href="/sponsor-login" class="dash-btn primary" style="display:inline-flex;">
       <i class="fa-solid fa-right-to-bracket"></i> Sign In
     </a>
   </div>
@@ -410,7 +410,7 @@
         <h1 id="dashGreeting">Welcome back</h1>
       </div>
       <div class="dash-header-actions">
-        <a href="../BecomeSponser.html" class="dash-btn">
+        <a href="/become-sponsor" class="dash-btn">
           <i class="fa-solid fa-plus"></i> New Donation
         </a>
         <button class="dash-btn" id="manageSubBtn">
@@ -483,7 +483,7 @@
     <div class="dash-empty" id="dashEmpty" style="display:none;">
       <i class="fa-solid fa-receipt"></i>
       <p>No payment history yet.</p>
-      <a href="../BecomeSponser.html" class="dash-btn primary" style="display:inline-flex;">
+      <a href="/become-sponsor" class="dash-btn primary" style="display:inline-flex;">
         <i class="fa-solid fa-heart"></i> Make Your First Donation
       </a>
     </div>
@@ -571,7 +571,7 @@
       // Wire up buttons
       document.getElementById('signOutBtn').addEventListener('click', async () => {
         await window.Clerk.signOut();
-        window.location.href = '../../home/Home.html';
+        window.location.href = '/home';
       });
 
       document.getElementById('manageSubBtn').addEventListener('click', (e) => openPortal(email, e.currentTarget));

@@ -1,0 +1,13 @@
+{
+  "rewrites": [
+    { "source": "/home", "destination": "/pages/home/Home.html" },
+    { "source": "/about", "destination": "/pages/aboutUs/AboutUs.html" },
+    { "source": "/events", "destination": "/pages/events/Events.html" },
+    { "source": "/join", "destination": "/pages/whyjoin/WhyJoin.html" },
+    { "source": "/become-member", "destination": "/pages/BecomeMember/BecomeMember.html" },
+    { "source": "/become-sponsor", "destination": "/pages/BecomeSponsor/BecomeSponser.html" },
+    { "source": "/sponsor-login", "destination": "/pages/BecomeSponsor/SponsorAuth/sponsorAuth.html" },
+    { "source": "/sponsor-dashboard", "destination": "/pages/BecomeSponsor/SponsorDashboard/sponsorDashboard.html" },
+    { "source": "/mtt", "destination": "/pages/MTT/MTT.html" }
+  ]
+}
