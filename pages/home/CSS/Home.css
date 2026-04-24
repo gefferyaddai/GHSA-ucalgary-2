@@ -399,6 +399,7 @@ body {
 
 .sponsor-photo-card {
     display: block;
+    position: relative;
     border-radius: var(--radius-md);
     overflow: hidden;
     box-shadow: var(--shadow-md);
@@ -441,6 +442,54 @@ body {
 }
 
 .sponsor-photo-card:hover img { transform: scale(1.04); }
+
+.sponsor-photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 107, 63, 0.92);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 24px 20px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    text-align: center;
+}
+
+.sponsor-photo-overlay i {
+    font-size: 1.2rem;
+    color: var(--gold, #d4a853);
+    flex-shrink: 0;
+}
+
+.sponsor-photo-quote {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: #ffffff;
+    font-style: italic;
+    margin: 0;
+}
+
+.sponsor-photo-card:hover .sponsor-photo-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sponsor-photo-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.sponsor-photo-title {
+    font-size: 0.8rem;
+    color: var(--gold, #d4a853);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
 
 /* ── SCROLL-IN ANIMATIONS ─────────────────────────── */
 .slide-from-top {
