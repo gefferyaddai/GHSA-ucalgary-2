@@ -1,4 +1,3 @@
-
 /* ── WWO card scroll-in animation ──────────────────── */
 const cards      = document.querySelectorAll('.wwo-card');
 const wwoSection = document.querySelector('.wwo-cards');
@@ -17,6 +16,24 @@ if (wwoSection && cards.length) {
     }, { threshold: 0.15 });
 
     observer.observe(wwoSection);
+}
+
+/* ── Sponsor photos scroll-in animation ────────────── */
+const sponsorPhotos = document.querySelectorAll('.sponsor-photo-card');
+
+if (sponsorPhotos.length) {
+    const photoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            } else {
+                // Remove so animation replays next time you scroll in
+                entry.target.classList.remove('in-view');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    sponsorPhotos.forEach(photo => photoObserver.observe(photo));
 }
 
 /* ── Newsletter — Mailchimp ─────────────────────────── */

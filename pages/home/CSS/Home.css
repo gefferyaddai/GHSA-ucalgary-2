@@ -324,28 +324,33 @@ body {
     margin: 0 auto;
 }
 
-.sponsors-top {
+/* Two-column layout: text left, photos right */
+.sponsors-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
-    align-items: end;
-    margin-bottom: 64px;
+    align-items: center;
 }
 
-.sponsors-top-left p {
+.sponsors-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.sponsors-body {
     font-size: 1rem;
     line-height: 1.8;
     color: var(--grey-700);
     max-width: 480px;
     margin-top: 16px;
+    margin-bottom: 36px;
 }
 
 .sponsor-buttons {
     display: flex;
     gap: 14px;
     flex-wrap: wrap;
-    justify-content: flex-end;
-    align-self: flex-end;
 }
 
 .sponsor-btn {
@@ -383,30 +388,83 @@ body {
     transform: translateY(-2px);
 }
 
-/* single sponsor */
-.sponsor-single {
-    display: flex;
-    justify-content: center;
-    padding: 8px 0;
+/* ── SPONSOR PHOTOS grid ──────────────────────────── */
+.sponsors-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 16px;
+    align-items: stretch;
 }
 
-.sponsor-logo-card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
+.sponsor-photo-card {
+    display: block;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.sponsor-logo-card img {
-    max-height: 160px;
-    max-width: 420px;
-    object-fit: contain;
-    mix-blend-mode: multiply;
-    transition: transform 0.25s ease;
+/* Small top-left */
+.sponsor-photo-card:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
 }
 
-.sponsor-logo-card:hover img {
-    transform: scale(1.06);
+/* Small bottom-left */
+.sponsor-photo-card:nth-child(2) {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+/* Big photo spans both rows on the right */
+.sponsor-photo-card:nth-child(3) {
+    grid-column: 2;
+    grid-row: 1 / 3;
+}
+
+.sponsor-photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.sponsor-photo-card:nth-child(1) img { height: 280px; object-fit: cover; object-position: top; }
+.sponsor-photo-card:nth-child(2) img { height: 180px; object-fit: cover; object-position: top; }
+.sponsor-photo-card:nth-child(3) img { min-height: 376px; }
+
+.sponsor-photo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.sponsor-photo-card:hover img { transform: scale(1.04); }
+
+/* ── SCROLL-IN ANIMATIONS ─────────────────────────── */
+.slide-from-top {
+    opacity: 0;
+    transform: translateY(-70px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.slide-from-bottom {
+    opacity: 0;
+    transform: translateY(70px);
+    transition: opacity 1.2s ease 0.2s, transform 1.2s ease 0.2s;
+}
+
+.slide-from-right {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 1.3s ease 0.1s, transform 1.3s ease 0.1s;
+}
+.slide-from-top.in-view,
+.slide-from-bottom.in-view,
+.slide-from-right.in-view {
+    opacity: 1;
+    transform: translate(0, 0);
 }
 
 /* ── NEWSLETTER ─────────────────────────────────────── */
@@ -531,7 +589,7 @@ body {
 
 /* ── RESPONSIVE ─────────────────────────────────────── */
 @media (max-width: 1100px) {
-    .sponsors-top { grid-template-columns: 1fr; gap: 32px; }
+    .sponsors-layout { grid-template-columns: 1fr; gap: 48px; }
     .sponsor-buttons { justify-content: flex-start; }
     .newsletter-container { grid-template-columns: 1fr; gap: 48px; }
     .newsletter-left { position: static; }
@@ -548,5 +606,11 @@ body {
     .wwo-cards { grid-template-columns: 1fr; }
     .newsletter-form { padding: 32px 24px; }
     .sponsor-btn { width: 100%; text-align: center; max-width: 360px; }
-}
-
+    .sponsors-photos { grid-template-columns: 1fr 1fr; }
+    .sponsor-photo-card:nth-child(1) { grid-column: 1; grid-row: 1; }
+    .sponsor-photo-card:nth-child(2) { grid-column: 1; grid-row: 2; }
+    .sponsor-photo-card:nth-child(3) { grid-column: 2; grid-row: 1 / 3; }
+    .sponsor-photo-card:nth-child(1) img,
+    .sponsor-photo-card:nth-child(2) img { height: 130px; }
+    .sponsor-photo-card:nth-child(3) img { min-height: 276px; }
+}xx
