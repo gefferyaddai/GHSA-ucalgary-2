@@ -314,43 +314,34 @@ body {
 
 /* ── SPONSORS ───────────────────────────────────────── */
 .sponsors-section {
-    padding: 120px 64px;
-    background: var(--white);
-    overflow: hidden;
-}
-
-.sponsors-container {
-    max-width: 1280px;
-    margin: 0 auto;
-}
-
-/* Two-column layout: text left, photos right */
-.sponsors-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-}
-
-.sponsors-left {
+    background: var(--green);
+    padding: 48px 64px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.sponsors-label {
+    color: rgba(255,255,255,0.75) !important;
 }
 
 .sponsors-body {
-    font-size: 1rem;
-    line-height: 1.8;
-    color: var(--grey-700);
-    max-width: 480px;
-    margin-top: 16px;
-    margin-bottom: 36px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.7;
+    color: #ffffff;
+    max-width: 560px;
+    margin: 0;
 }
 
 .sponsor-buttons {
     display: flex;
     gap: 14px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .sponsor-btn {
