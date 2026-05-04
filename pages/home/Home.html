@@ -7,6 +7,7 @@
     <title>Home — GHSA UCalgary</title>
     <link rel="stylesheet" href="/pages/home/NavBar.css">
     <link rel="stylesheet" href="/pages/home/CSS/Home.css">
+    <link rel="stylesheet" href="/pages/BecomeSponsor/CSS/BecomeSponsor.css">
     <link rel="stylesheet" href="/pages/home/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
@@ -37,20 +38,7 @@
 
 <!-- ── HERO ───────────────────────────────────────── -->
 <section class="hero">
-    <video
-            autoplay
-            muted
-            loop
-            playsinline
-            webkit-playsinline
-            x5-playsinline
-            preload="metadata"
-            poster="/pages/home/assets/landingpage-bg.jpg"
-            class="bg-video"
-            id="heroVideo"
-    >
-        <source src="/pages/home/assets/home-bg-video.mp4" type="video/mp4" />
-    </video>
+    <img src="/pages/home/assets/ghsa_homepage.jpeg" alt="" class="bg-video" aria-hidden="true">
     <div class="hero-overlay"></div>
 
     <div class="hero-content">
@@ -140,16 +128,12 @@
                     <img src="/pages/BecomeSponsor/assets/kofi-debrah.jpg" alt="Rev Dr Kofi Debrah">
                     <div class="sponsor-photo-overlay">
                         <span class="sponsor-photo-name">Rev Dr Kofi Debrah</span>
-                        <span class="sponsor-photo-title">Legacy Supporter</span>
+                        <span class="sponsor-photo-title">Cultural Advocate</span>
                         <i class="fa-solid fa-quote-left"></i>
                         <p class="sponsor-photo-quote">"What GHSA is currently doing is monumental! It is clear the next generation of Ghanaian students are in great hands &amp; I am a strong advocate for this initiative."</p>
                     </div>
                 </a>
-                <a href="https://gcacalgary.ca/awards/" target="_blank" rel="noopener"
-                   class="sponsor-photo-card slide-from-bottom">
-                    <img src="/pages/BecomeSponsor/assets/dr-charles.jpg" alt="Sponsor">
-                </a>
-                <a href="https://gcacalgary.ca/awards/" target="_blank" rel="noopener"
+<a href="https://gcacalgary.ca/awards/" target="_blank" rel="noopener"
                    class="sponsor-photo-card slide-from-right">
                     <img src="/pages/BecomeSponsor/assets/dr-charles.jpg" alt="Dr. Charles Odame-Ankrah">
                     <div class="sponsor-photo-overlay">
@@ -159,6 +143,54 @@
                         <p class="sponsor-photo-quote">"I'm encouraged by the vision and direction of GHSA and the space it creates for connection and growth. It's a strong platform for building community and developing the next generation of leaders."</p>
                     </div>
                 </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- ── LEGACY SUPPORTERS ───────────────────────────── -->
+<section class="sp-legacy" id="legacy-supporters">
+    <div class="sp-legacy-container">
+        <div class="sp-legacy-header">
+            <p class="section-label">Those Who Believed First</p>
+            <h2 class="section-title">Legacy Supporters</h2>
+            <p>
+                These individuals have gone above and beyond to invest in the future
+                of GHSA and the Ghanaian student community at UCalgary.
+                Hover over each portrait to hear their words.
+            </p>
+        </div>
+
+        <div class="sp-legacy-grid">
+
+            <!-- Legacy Supporter 1 -->
+            <div class="sp-legacy-card">
+                <div class="sp-legacy-img-wrap">
+                    <img src="/pages/BecomeSponsor/assets/dr-charles.JPG" alt="Dr. Charles Odame-Ankrah">
+                    <div class="sp-legacy-overlay">
+                        <i class="fa-solid fa-quote-left"></i>
+                        <p>"I'm encouraged by the vision and direction of GHSA and the space it creates for connection and growth. It's a strong platform for building community and developing the next generation of leaders."</p>
+                    </div>
+                </div>
+                <div class="sp-legacy-info">
+                    <h3>Dr. Charles Odame-Ankrah</h3>
+                    <span>Legacy Supporter</span>
+                </div>
+            </div>
+
+            <!-- Legacy Supporter 2 -->
+            <div class="sp-legacy-card">
+                <div class="sp-legacy-img-wrap">
+                    <img src="/pages/BecomeSponsor/assets/kofi-debrah.JPG" alt="Rev Dr Kofi Debrah">
+                    <div class="sp-legacy-overlay">
+                        <i class="fa-solid fa-quote-left"></i>
+                        <p>"What GHSA is currently doing is monumental! It is clear the next generation of Ghanaian students are in great hands & I am a strong advocate for this initiative."</p>
+                    </div>
+                </div>
+                <div class="sp-legacy-info">
+                    <h3>Rev Dr Kofi Debrah</h3>
+                    <span>Cultural Advocate</span>
+                </div>
             </div>
 
         </div>
@@ -202,23 +234,15 @@
     <div class="footer-socials">
         <a href="https://www.linkedin.com/company/ghanaian-students-association-ucalgary/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
         <a href="https://www.instagram.com/ghsa_uofc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="/cdn-cgi/l/email-protection#0a7f696b666d6b78736d62796b4a6d676b636624696567" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+        <a href="mailto:ucalgaryghsa@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
     </div>
     <div class="footer-divider"></div>
     <p class="footer-text">© 2026 <span>GHSA UCalgary Chapter</span>. All Rights Reserved.</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/pages/home/JS/Home.js"></script>
+<script src="/pages/home/JS/Home.js"></script>
 <script>
-    // ── MOBILE VIDEO AUTOPLAY FALLBACK ────────────────
-    const heroVideo = document.getElementById('heroVideo');
-    if (heroVideo) {
-        const tryPlay = () => { heroVideo.muted = true; heroVideo.play().catch(() => {}); };
-        tryPlay();
-        document.addEventListener('touchstart', tryPlay, { once: true });
-        document.addEventListener('click', tryPlay, { once: true });
-        document.addEventListener('visibilitychange', () => { if (!document.hidden) tryPlay(); });
-    }
+
 
 </script>
 <script src="/pages/common.js"></script>
