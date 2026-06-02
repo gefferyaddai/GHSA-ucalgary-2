@@ -4,8 +4,8 @@
 
 // ── COUNTDOWN CONFIG ─────────────────────────────────
 const NEXT_EVENT = {
-    name: "Ghana Independence Day 2027",
-    date: new Date(2027, 2, 6, 18, 0, 0), // March 6 2027, 6:00 PM
+    name: "GHSA 90's Backyard Bash",
+    date: new Date(2026, 6, 3, 16, 0, 0), // July 3 2026, 4:00 PM
 };
 
 // ── COUNTDOWN TIMER ──────────────────────────────────
