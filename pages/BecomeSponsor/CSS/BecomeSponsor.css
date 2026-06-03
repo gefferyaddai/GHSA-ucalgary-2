@@ -758,7 +758,7 @@ body {
 
 .sp-legacy-grid {
     display: flex;
-    gap: 48px;
+    gap: 32px;
     justify-content: center;
     flex-wrap: wrap;
 }
@@ -772,8 +772,8 @@ body {
 
 .sp-legacy-img-wrap {
     position: relative;
-    width: 350px;
-    height: 480px;
+    width: 270px;
+    height: 370px;
     border-radius: var(--radius-lg);
     overflow: hidden;
     cursor: pointer;
