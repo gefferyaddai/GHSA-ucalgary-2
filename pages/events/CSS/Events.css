@@ -277,7 +277,7 @@ body {
 .recap-modal-head { margin-bottom: 20px; padding-right: 40px; }
 .recap-modal-head h3 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
 .recap-carousel { display: flex; align-items: center; gap: 12px; }
-.recap-viewport { flex: 1; overflow: hidden; border-radius: var(--radius-md); }
+.recap-viewport { flex: 1; min-width: 0; overflow: hidden; border-radius: var(--radius-md); }
 .recap-track { display: flex; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
 .recap-slide { min-width: 100%; }
 .recap-slide img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--grey-100); }
