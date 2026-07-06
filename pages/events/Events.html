@@ -69,18 +69,10 @@
             </button>
         </div>
 
-        <div class="featured-event">
-            <div class="featured-flyer">
-                <img src="/pages/events/assets/ghsa_flyer.jpg" alt="GHSA upcoming event flyer">
-                <div class="giveaway-badge">
-                    <i class="fa-solid fa-gift"></i>
-                   Limited tickets available
-                </div>
-            </div>
-            <a href="https://www.eventbrite.com/e/ghsas-90s-backyard-bash-tickets-1991807088620" target="_blank" rel="noopener" class="rsvp-btn" id="rsvpBtn">
-                <i class="fa-regular fa-calendar-check"></i>
-                Get Tickets
-            </a>
+        <div class="empty-state">
+            <div class="empty-state-icon"><i class="fa-regular fa-calendar-xmark"></i></div>
+            <h3>No Upcoming Events</h3>
+            <p>There are no events on the calendar right now. Hit "Get Notified" and we'll email you the moment the next GHSA event drops.</p>
         </div>
 
         <!-- Event cards — uncomment and populate when you have events
@@ -111,7 +103,7 @@
     <!-- ── SECTION 2 — COUNTDOWN ──────────────────────── -->
     <section class="countdown-section">
         <p class="section-label">Next Event</p>
-        <h2 class="countdown-event-name" id="countdownEventName">GHSA 90's Backyard Bash</h2>
+        <h2 class="countdown-event-name" id="countdownEventName">No Upcoming Events</h2>
         <div class="countdown-grid">
             <div class="countdown-unit">
                 <div class="countdown-number" id="cdDays">--</div>
@@ -139,7 +131,6 @@
     </section>
 
     <!-- ── SECTION 3 — PAST EVENTS ────────────────────── -->
-    <!--
     <section class="past-events-section">
         <div class="past-events-container">
             <div class="past-events-header">
@@ -148,57 +139,26 @@
                 <p class="section-sub">A look at what we've put together for our community.</p>
             </div>
             <div class="past-events-list">
-                <div class="past-event-row">
-                    <div class="past-event-date">
-                        <span class="month">Nov</span>
-                        <span class="day">15</span>
-                        <span class="year">2025</span>
+                <div class="past-event-feature">
+                    <div class="past-event-poster">
+                        <img src="/pages/events/assets/ghsa_flyer.jpg" alt="GHSA 90's Backyard Bash poster">
                     </div>
-                    <div class="past-event-info">
-                        <h3>Cultural Night 2025</h3>
-                        <p>An evening of food, fashion, and Ghanaian culture at MacHall Ballroom</p>
+                    <div class="past-event-feature-body">
+                        <span class="past-event-tag">Social</span>
+                        <h3>GHSA 90's Backyard Bash</h3>
+                        <div class="past-event-feature-meta">
+                            <span><i class="fa-regular fa-calendar"></i> July 3, 2026</span>
+                        </div>
+                        <p>A throwback summer party with music, food, and games — a celebration of community and Ghanaian culture right here in Calgary.</p>
+                        <button class="recap-btn" id="recapBtn">
+                            <i class="fa-regular fa-images"></i>
+                            View Event Recap
+                        </button>
                     </div>
-                    <span class="past-event-tag">Cultural</span>
-                </div>
-                <div class="past-event-row">
-                    <div class="past-event-date">
-                        <span class="month">Sep</span>
-                        <span class="day">20</span>
-                        <span class="year">2025</span>
-                    </div>
-                    <div class="past-event-info">
-                        <h3>Welcome Back BBQ</h3>
-                        <p>Kicking off the new school year with food and new friendships</p>
-                    </div>
-                    <span class="past-event-tag">Social</span>
-                </div>
-                <div class="past-event-row">
-                    <div class="past-event-date">
-                        <span class="month">Feb</span>
-                        <span class="day">08</span>
-                        <span class="year">2025</span>
-                    </div>
-                    <div class="past-event-info">
-                        <h3>Academic Workshop</h3>
-                        <p>Study strategies, resources, and peer support for winter semester</p>
-                    </div>
-                    <span class="past-event-tag">Academic</span>
-                </div>
-                <div class="past-event-row">
-                    <div class="past-event-date">
-                        <span class="month">Oct</span>
-                        <span class="day">03</span>
-                        <span class="year">2024</span>
-                    </div>
-                    <div class="past-event-info">
-                        <h3>Networking Night</h3>
-                        <p>Connecting students with Ghanaian professionals in Calgary</p>
-                    </div>
-                    <span class="past-event-tag">Networking</span>
                 </div>
             </div>
         </div>
-    </section>  -->
+    </section>
 
     <!-- ── SECTION 4 — CALENDAR ───────────────────────── -->
     <section class="calendar-section">
@@ -234,6 +194,60 @@
     <div class="footer-divider"></div>
     <p class="footer-text">© 2026 <span>GHSA UCalgary Chapter</span>. All Rights Reserved.</p>
 </footer>
+
+<!-- ── EVENT RECAP CAROUSEL MODAL ─────────────────── -->
+<div class="recap-modal-overlay" id="recapModal">
+    <div class="recap-modal">
+        <button class="recap-close" id="recapClose" aria-label="Close recap">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="recap-modal-head">
+            <p class="section-label">Event Recap</p>
+            <h3>GHSA 90's Backyard Bash</h3>
+        </div>
+        <div class="recap-carousel">
+            <button class="recap-arrow recap-prev" id="recapPrev" aria-label="Previous photo">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="recap-viewport">
+                <div class="recap-track" id="recapTrack">
+                    <div class="recap-slide">
+                        <div class="recap-placeholder"><i class="fa-regular fa-image"></i><span>Photo 1</span></div>
+                    </div>
+                    <div class="recap-slide">
+                        <div class="recap-placeholder"><i class="fa-regular fa-image"></i><span>Photo 2</span></div>
+                    </div>
+                    <div class="recap-slide">
+                        <div class="recap-placeholder"><i class="fa-regular fa-image"></i><span>Photo 3</span></div>
+                    </div>
+                    <div class="recap-slide">
+                        <div class="recap-placeholder"><i class="fa-regular fa-image"></i><span>Photo 4</span></div>
+                    </div>
+                    <div class="recap-slide">
+                        <div class="recap-placeholder"><i class="fa-regular fa-image"></i><span>Photo 5</span></div>
+                    </div>
+                    <div class="recap-slide">
+                        <div class="recap-placeholder recap-placeholder-more">
+                            <i class="fa-solid fa-images"></i>
+                            <span>Want to see the rest?</span>
+                            <a href="/backyard-bash-recap" class="recap-more-btn">
+                                View More Photos
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="recap-arrow recap-next" id="recapNext" aria-label="Next photo">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+        <div class="recap-footer">
+            <div class="recap-dots" id="recapDots"></div>
+            <p class="recap-counter" id="recapCounter">1 / 6</p>
+        </div>
+    </div>
+</div>
 
 <!-- ── GET NOTIFIED MODAL ─────────────────────────── -->
 <div class="notify-modal-overlay" id="notifyModal">
