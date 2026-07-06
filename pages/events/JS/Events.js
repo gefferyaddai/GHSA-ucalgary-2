@@ -3,19 +3,31 @@
    ============================================================ */
 
 // ── COUNTDOWN CONFIG ─────────────────────────────────
-const NEXT_EVENT = {
-    name: "GHSA 90's Backyard Bash",
-    date: new Date(2026, 6, 3, 16, 0, 0), // July 3 2026, 4:00 PM
-};
+// Set to null when there is no upcoming event.
+const NEXT_EVENT = null;
+// Example when an event is scheduled:
+// const NEXT_EVENT = { name: "Event Name", date: new Date(2026, 6, 3, 16, 0, 0) };
 
 // ── COUNTDOWN TIMER ──────────────────────────────────
 function pad(n) { return String(n).padStart(2, '0'); }
 
 function updateCountdown() {
-    const now  = new Date();
-    const diff = NEXT_EVENT.date - now;
     const note = document.getElementById('countdownNote');
     const name = document.getElementById('countdownEventName');
+    const grid = document.querySelector('.countdown-grid');
+
+    if (!NEXT_EVENT) {
+        if (name) name.textContent = 'No Upcoming Events';
+        if (grid) grid.style.display = 'none';
+        if (note) {
+            note.style.display = 'block';
+            note.textContent = "We'll announce the next one soon — check back or get notified above.";
+        }
+        return;
+    }
+
+    const now  = new Date();
+    const diff = NEXT_EVENT.date - now;
 
     if (name) name.textContent = NEXT_EVENT.name;
 
@@ -47,7 +59,71 @@ function updateCountdown() {
 }
 
 updateCountdown();
-setInterval(updateCountdown, 1000);
+if (NEXT_EVENT) setInterval(updateCountdown, 1000);
+
+// ── EVENT RECAP CAROUSEL ─────────────────────────────
+const recapModal   = document.getElementById('recapModal');
+const recapBtn     = document.getElementById('recapBtn');
+const recapClose   = document.getElementById('recapClose');
+const recapTrack   = document.getElementById('recapTrack');
+const recapPrev    = document.getElementById('recapPrev');
+const recapNext    = document.getElementById('recapNext');
+const recapDots    = document.getElementById('recapDots');
+const recapCounter = document.getElementById('recapCounter');
+
+if (recapModal && recapBtn) {
+    const slideCount = recapTrack.children.length;
+    let recapIndex = 0;
+
+    // Build dots
+    for (let i = 0; i < slideCount; i++) {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.setAttribute('aria-label', `Go to photo ${i + 1}`);
+        dot.addEventListener('click', () => goToSlide(i));
+        recapDots.appendChild(dot);
+    }
+
+    function renderRecap() {
+        recapTrack.style.transform = `translateX(-${recapIndex * 100}%)`;
+        recapCounter.textContent = `${recapIndex + 1} / ${slideCount}`;
+        recapPrev.disabled = recapIndex === 0;
+        recapNext.disabled = recapIndex === slideCount - 1;
+        Array.from(recapDots.children).forEach((dot, i) => {
+            dot.classList.toggle('active', i === recapIndex);
+        });
+    }
+
+    function goToSlide(i) {
+        recapIndex = Math.max(0, Math.min(slideCount - 1, i));
+        renderRecap();
+    }
+
+    function openRecap() {
+        recapModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        goToSlide(0);
+    }
+
+    function closeRecap() {
+        recapModal.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    recapBtn.addEventListener('click', openRecap);
+    recapClose.addEventListener('click', closeRecap);
+    recapPrev.addEventListener('click', () => goToSlide(recapIndex - 1));
+    recapNext.addEventListener('click', () => goToSlide(recapIndex + 1));
+    recapModal.addEventListener('click', (e) => { if (e.target === recapModal) closeRecap(); });
+    document.addEventListener('keydown', (e) => {
+        if (!recapModal.classList.contains('open')) return;
+        if (e.key === 'Escape')     closeRecap();
+        if (e.key === 'ArrowLeft')  goToSlide(recapIndex - 1);
+        if (e.key === 'ArrowRight') goToSlide(recapIndex + 1);
+    });
+
+    renderRecap();
+}
 
 // ── GET NOTIFIED MODAL — MAILCHIMP ───────────────────
 const MAILCHIMP_URL = 'https://gmail.us22.list-manage.com/subscribe/post?u=0f393d7af469c9798babf3f29&id=9734ce82ad&f_id=00e0c2e1f0';
