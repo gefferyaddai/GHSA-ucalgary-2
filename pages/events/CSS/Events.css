@@ -280,6 +280,7 @@ body {
 .recap-viewport { flex: 1; overflow: hidden; border-radius: var(--radius-md); }
 .recap-track { display: flex; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
 .recap-slide { min-width: 100%; }
+.recap-slide img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--grey-100); }
 .recap-placeholder {
     display: flex;
     flex-direction: column;
