@@ -3,6 +3,7 @@
     { "source": "/home", "destination": "/pages/home/Home.html" },
     { "source": "/about", "destination": "/pages/aboutUs/AboutUs.html" },
     { "source": "/events", "destination": "/pages/events/Events.html" },
+    { "source": "/backyard-bash-recap", "destination": "/pages/events/Recap.html" },
     { "source": "/join", "destination": "/pages/whyjoin/WhyJoin.html" },
     { "source": "/become-member", "destination": "/pages/BecomeMember/BecomeMember.html" },
     { "source": "/become-sponsor", "destination": "/pages/BecomeSponsor/BecomeSponser.html" },
