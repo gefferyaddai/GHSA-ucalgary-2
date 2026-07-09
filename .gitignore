@@ -1,0 +1,5 @@
+.DS_Store
+node_modules/
+
+# Full-resolution photo backups — keep local, never deploy
+**/_full_originals/

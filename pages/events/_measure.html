@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stay up to date with GHSA UCalgary events — cultural nights, community outreach, and student gatherings happening throughout the year.">
+    <title>Events — GHSA UCalgary</title>
+
+    <!-- ── Open Graph / Social Preview ──────────────────── -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="GHSA UCalgary">
+    <meta property="og:title" content="Upcoming Events — GHSA UCalgary">
+    <meta property="og:description" content="RSVP to our next event and enter the $50 giveaway. Cultural nights, community outreach, and student gatherings all year long.">
+    <meta property="og:url" content="https://ghsa.ca/events">
+    <meta property="og:image" content="https://ghsa.ca/pages/events/assets/ghsa_flyer.jpg">
+    <meta property="og:image:alt" content="GHSA UCalgary upcoming event flyer">
+
+    <!-- ── Twitter Card ─────────────────────────────────── -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Upcoming Events — GHSA UCalgary">
+    <meta name="twitter:description" content="RSVP to our next event and enter the $50 giveaway.">
+    <meta name="twitter:image" content="https://ghsa.ca/pages/events/assets/ghsa_flyer.jpg">
+    <link rel="stylesheet" href="/pages/home/NavBar.css">
+    <link rel="stylesheet" href="/pages/events/CSS/Events.css">
+    <link rel="stylesheet" href="/pages/home/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+</head>
+<body>
+
+<!-- ── NAV ────────────────────────────────────────── -->
+<nav class="nav" id="mainNav">
+    <div class="wrap nav-inner">
+        <div class="brand">
+            <img src="/pages/home/assets/new-ghsa-logo-rbg.png" alt="GHSA Logo" />
+            <span></span>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links" id="navLinks">
+            <a href="/home">Home</a>
+            <a href="/about">About Us</a>
+            <a href="/events" class="active">Events</a>
+            <a href="/mtt">Meet Us</a>
+            <a href="/join">Why Join</a>
+            <a href="/become-sponsor">Sponsor</a>
+        </div>
+    </div>
+</nav>
+
+<div class="events-page">
+
+    <!-- ── SECTION 1 — UPCOMING EVENTS ───────────────── -->
+    <section class="upcoming-section">
+        <div class="upcoming-header">
+            <div>
+                <p class="section-label">What's On</p>
+                <h1 class="section-title">Upcoming Events</h1>
+                <p class="section-sub">Stay tuned for GHSA events, gatherings, and community activities.</p>
+            </div>
+            <button class="notify-btn" id="notifyBtn">
+                <i class="fa-regular fa-bell"></i>
+                Get Notified
+            </button>
+        </div>
+
+        <div class="empty-state">
+            <div class="empty-state-icon"><i class="fa-regular fa-calendar-xmark"></i></div>
+            <h3>No Upcoming Events</h3>
+            <p>There are no events on the calendar right now. Hit "Get Notified" and we'll email you the moment the next GHSA event drops.</p>
+        </div>
+
+        <!-- Event cards — uncomment and populate when you have events
+        <div class="events-grid">
+            <div class="event-card">
+                <div class="event-card-banner">
+                    <img src="./assets/event1.jpg" alt="Event">
+                    <div class="event-date-badge">
+                        <span class="month">Apr</span>
+                        <span class="day">12</span>
+                    </div>
+                </div>
+                <div class="event-card-body">
+                    <h3>Cultural Night 2026</h3>
+                    <div class="event-card-meta">
+                        <i class="fa-regular fa-clock"></i> 6:00 PM
+                        &nbsp;·&nbsp;
+                        <i class="fa-regular fa-location-dot"></i> MacHall Ballroom
+                    </div>
+                    <p>Join us for an evening of food, dance, and celebration of Ghanaian culture.</p>
+                    <a href="#" class="event-card-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+        -->
+    </section>
+
+    <!-- ── SECTION 2 — COUNTDOWN ──────────────────────── -->
+    <section class="countdown-section">
+        <p class="section-label">Next Event</p>
+        <h2 class="countdown-event-name" id="countdownEventName">No Upcoming Events</h2>
+        <div class="countdown-grid">
+            <div class="countdown-unit">
+                <div class="countdown-number" id="cdDays">--</div>
+                <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-unit">
+                <div class="countdown-number" id="cdHours">--</div>
+                <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-unit">
+                <div class="countdown-number" id="cdMinutes">--</div>
+                <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-unit">
+                <div class="countdown-number" id="cdSeconds">--</div>
+                <div class="countdown-label">Seconds</div>
+            </div>
+        </div>
+        <p class="countdown-no-event" id="countdownNote">
+            Set your next event date in Events.js to activate the countdown.
+        </p>
+    </section>
+
+    <!-- ── SECTION 3 — PAST EVENTS ────────────────────── -->
+    <section class="past-events-section">
+        <div class="past-events-container">
+            <div class="past-events-header">
+                <p class="section-label">Look Back</p>
+                <h2 class="section-title">Past Events</h2>
+                <p class="section-sub">A look at what we've put together for our community.</p>
+            </div>
+            <div class="past-events-list">
+                <div class="past-event-feature">
+                    <div class="past-event-poster">
+                        <img src="/pages/events/assets/ghsa_flyer.jpg" alt="GHSA 90's Backyard Bash poster">
+                    </div>
+                    <div class="past-event-feature-body">
+                        <span class="past-event-tag">Social</span>
+                        <h3>GHSA 90's Backyard Bash</h3>
+                        <div class="past-event-feature-meta">
+                            <span><i class="fa-regular fa-calendar"></i> July 3, 2026</span>
+                        </div>
+                        <p>A throwback summer party with music, food, and games — a celebration of community and Ghanaian culture right here in Calgary.</p>
+                        <button class="recap-btn" id="recapBtn">
+                            <i class="fa-regular fa-images"></i>
+                            View Event Recap
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── SECTION 4 — CALENDAR ───────────────────────── -->
+    <section class="calendar-section">
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <p class="section-label">Schedule</p>
+                <h2 class="section-title">Event Calendar</h2>
+                <p class="section-sub">View the full GHSA schedule and plan ahead.</p>
+            </div>
+            <div class="calendar-card">
+                <iframe
+                        src="https://calendar.google.com/calendar/embed?src=c97aad5794eb6a83ab8213c522dddaacfb5708f6021ab362a6d9633b6330bc0f%40group.calendar.google.com&ctz=America%2FEdmonton"
+                        style="border: 0"
+                        width="100%"
+                        height="640"
+                        frameborder="0"
+                        scrolling="no"
+                        title="GHSA Event Calendar">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+
+<footer class="footer">
+    <div class="footer-socials">
+        <a href="https://www.linkedin.com/company/ghanaian-students-association-ucalgary/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/ghsa_uofc/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="mailto:ucalgaryghsa@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+    </div>
+    <div class="footer-divider"></div>
+    <p class="footer-text">© 2026 <span>GHSA UCalgary Chapter</span>. All Rights Reserved.</p>
+</footer>
+
+<!-- ── EVENT RECAP CAROUSEL MODAL ─────────────────── -->
+<div class="recap-modal-overlay" id="recapModal">
+    <div class="recap-modal">
+        <button class="recap-close" id="recapClose" aria-label="Close recap">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="recap-modal-head">
+            <p class="section-label">Event Recap</p>
+            <h3>GHSA 90's Backyard Bash</h3>
+        </div>
+        <div class="recap-carousel">
+            <button class="recap-arrow recap-prev" id="recapPrev" aria-label="Previous photo">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="recap-viewport">
+                <div class="recap-track" id="recapTrack">
+                    <div class="recap-slide">
+                        <img src="/pages/events/assets/ghsa-photo1.jpg" alt="GHSA 90's Backyard Bash photo 1" loading="lazy">
+                    </div>
+                    <div class="recap-slide">
+                        <img src="/pages/events/assets/ghsa-photo2.jpg" alt="GHSA 90's Backyard Bash photo 2" loading="lazy">
+                    </div>
+                    <div class="recap-slide">
+                        <img src="/pages/events/assets/ghsa-photo3.jpg" alt="GHSA 90's Backyard Bash photo 3" loading="lazy">
+                    </div>
+                    <div class="recap-slide">
+                        <img src="/pages/events/assets/ghsa-photo4.jpg" alt="GHSA 90's Backyard Bash photo 4" loading="lazy">
+                    </div>
+                    <div class="recap-slide">
+                        <img src="/pages/events/assets/ghsa-photo5.jpg" alt="GHSA 90's Backyard Bash photo 5" loading="lazy">
+                    </div>
+                    <div class="recap-slide">
+                        <div class="recap-placeholder recap-placeholder-more">
+                            <i class="fa-solid fa-images"></i>
+                            <span>Want to see the rest?</span>
+                            <a href="/backyard-bash-recap" class="recap-more-btn">
+                                View More Photos
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="recap-arrow recap-next" id="recapNext" aria-label="Next photo">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+        <div class="recap-footer">
+            <div class="recap-dots" id="recapDots"></div>
+            <p class="recap-counter" id="recapCounter">1 / 6</p>
+        </div>
+    </div>
+</div>
+
+<!-- ── GET NOTIFIED MODAL ─────────────────────────── -->
+<div class="notify-modal-overlay" id="notifyModal">
+    <div class="notify-modal">
+        <button class="notify-modal-close" id="notifyModalClose">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div id="notifyFormState">
+            <div class="notify-modal-icon"><i class="fa-regular fa-bell"></i></div>
+            <h3>Get Notified</h3>
+            <p>Be the first to know when GHSA events are announced.</p>
+            <form id="notifyForm">
+                <div class="notify-field">
+                    <label for="notifyFirstName">First Name</label>
+                    <input type="text" id="notifyFirstName" placeholder="Jane" required>
+                </div>
+                <div class="notify-field">
+                    <label for="notifyEmail">Email Address</label>
+                    <input type="email" id="notifyEmail" placeholder="jane@example.com" required>
+                </div>
+                <button type="submit" class="notify-submit-btn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span id="notifySubmitLabel">Notify Me</span>
+                </button>
+            </form>
+            <p class="notify-modal-note">
+                <i class="fa-solid fa-lock"></i>
+                No spam, ever. Unsubscribe anytime.
+            </p>
+        </div>
+        <div id="notifySuccessState" style="display:none; text-align:center; padding: 20px 0;">
+            <div class="notify-modal-icon"><i class="fa-solid fa-circle-check"></i> </div>
+            <h3>You're on the list!</h3>
+            <p style="margin-top:10px; color:#666; font-size:0.9rem; line-height:1.7;">
+                We'll let you know as soon as the next GHSA event is announced.
+            </p>
+        </div>
+    </div>
+</div>
+
+<script src="/pages/events/JS/Events.js"></script>
+<script src="/pages/common.js"></script>
+<script>
+window.addEventListener('load', function(){
+  setTimeout(function(){
+    var b=document.getElementById('recapBtn'); if(b) b.click();
+    setTimeout(function(){
+      function w(sel){var e=document.querySelector(sel);return e?Math.round(e.getBoundingClientRect().width):'na';}
+      var out='vw='+window.innerWidth+' overlay='+w('.recap-modal-overlay')+' modal='+w('.recap-modal')+' carousel='+w('.recap-carousel')+' viewport='+w('.recap-viewport')+' track='+w('.recap-track')+' slide='+w('.recap-slide')+' img='+w('.recap-slide img');
+      var d=document.createElement('div');
+      d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:99999;background:red;color:#fff;font-size:13px;padding:6px;font-family:monospace;white-space:normal;';
+      d.textContent=out; document.body.appendChild(d);
+    }, 300);
+  }, 400);
+});
+</script>
+</body>
+</html>
