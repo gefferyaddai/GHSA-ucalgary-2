@@ -50,9 +50,9 @@ function renderInstagram() {
     if (!igGrid) return;
 
     const IG_POST_URLS = [
-        "https://www.instagram.com/p/DVXSE0ckoVl/",
-        "https://www.instagram.com/p/DVcuGqakYbb/",
-        "https://www.instagram.com/p/DVjPNk4mnvc/",
+        "https://www.instagram.com/p/DeFcRw6ktg4/?img_index=3",
+        "https://www.instagram.com/p/DdznnnLy2vN/",
+        "https://www.instagram.com/p/DeaQZnQAY-d/?img_index=1",
     ];
 
     if (IG_POST_URLS.length === 0) {

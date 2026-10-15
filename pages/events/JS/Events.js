@@ -61,17 +61,19 @@ function updateCountdown() {
 updateCountdown();
 if (NEXT_EVENT) setInterval(updateCountdown, 1000);
 
-// ── EVENT RECAP CAROUSEL ─────────────────────────────
-const recapModal   = document.getElementById('recapModal');
-const recapBtn     = document.getElementById('recapBtn');
-const recapClose   = document.getElementById('recapClose');
-const recapTrack   = document.getElementById('recapTrack');
-const recapPrev    = document.getElementById('recapPrev');
-const recapNext    = document.getElementById('recapNext');
-const recapDots    = document.getElementById('recapDots');
-const recapCounter = document.getElementById('recapCounter');
+// ── EVENT RECAP CAROUSELS ────────────────────────────
+// Each "View Event Recap" button opens the modal named by its data-recap-target.
+document.querySelectorAll('[data-recap-target]').forEach((recapBtn) => {
+    const recapModal = document.getElementById(recapBtn.dataset.recapTarget);
+    if (!recapModal) return;
 
-if (recapModal && recapBtn) {
+    const recapClose   = recapModal.querySelector('.recap-close');
+    const recapTrack   = recapModal.querySelector('.recap-track');
+    const recapPrev    = recapModal.querySelector('.recap-prev');
+    const recapNext    = recapModal.querySelector('.recap-next');
+    const recapDots    = recapModal.querySelector('.recap-dots');
+    const recapCounter = recapModal.querySelector('.recap-counter');
+
     const slideCount = recapTrack.children.length;
     let recapIndex = 0;
 
@@ -123,7 +125,7 @@ if (recapModal && recapBtn) {
     });
 
     renderRecap();
-}
+});
 
 // ── GET NOTIFIED MODAL — MAILCHIMP ───────────────────
 const MAILCHIMP_URL = 'https://gmail.us22.list-manage.com/subscribe/post?u=0f393d7af469c9798babf3f29&id=9734ce82ad&f_id=00e0c2e1f0';
