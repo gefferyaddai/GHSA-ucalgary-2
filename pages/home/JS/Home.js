@@ -88,3 +88,24 @@ if (newsletterForm) {
         }
     });
 }
+
+// ── AMAZING RACE POPUP ───────────────────────────────
+// Shows on every load until the event starts. Only the X closes it.
+const RACE_START = new Date(2026, 10, 15, 17, 0, 0);
+const racePopup  = document.getElementById('racePopup');
+
+if (racePopup && new Date() < RACE_START) {
+    const racePopupClose = document.getElementById('racePopupClose');
+    const pageContent    = Array.from(document.body.children).filter(el => el !== racePopup && el.tagName !== 'SCRIPT');
+
+    racePopup.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    pageContent.forEach(el => { el.inert = true; });
+    racePopupClose.focus();
+
+    racePopupClose.addEventListener('click', () => {
+        racePopup.classList.remove('open');
+        document.body.style.overflow = '';
+        pageContent.forEach(el => { el.inert = false; });
+    });
+}
