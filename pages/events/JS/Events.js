@@ -4,7 +4,7 @@
 
 // ── COUNTDOWN CONFIG ─────────────────────────────────
 // Set to null when there is no upcoming event.
-const NEXT_EVENT = { name: "GHSA Amazing Race", date: new Date(2026, 10, 15, 17, 0, 0) };
+const NEXT_EVENT = { name: "GHSA Amazing Race", date: new Date(2026, 10, 20, 17, 0, 0) };
 // Example when an event is scheduled:
 // const NEXT_EVENT = { name: "Event Name", date: new Date(2026, 6, 3, 16, 0, 0) };
 
