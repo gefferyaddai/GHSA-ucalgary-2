@@ -89,23 +89,40 @@ if (newsletterForm) {
     });
 }
 
-// ── AMAZING RACE POPUP ───────────────────────────────
-// Shows on every load through the day of the race (Nov 15). Only the X closes it.
-const RACE_POPUP_END = new Date(2026, 10, 16, 0, 0, 0);
-const racePopup  = document.getElementById('racePopup');
+// ── EVENT POPUPS ─────────────────────────────────────
+// Each shows on every load through its last day, one after another. Only the X closes them.
+const EVENT_POPUPS = [
+    { id: 'racePopup',   end: new Date(2026, 10, 16, 0, 0, 0) }, // Amazing Race, through Nov 15
+    { id: 'bottlePopup', end: new Date(2026, 10, 17, 0, 0, 0) }, // Bottle Drive, through Nov 16
+];
 
-if (racePopup && new Date() < RACE_POPUP_END) {
-    const racePopupClose = document.getElementById('racePopupClose');
-    const pageContent    = Array.from(document.body.children).filter(el => el !== racePopup && el.tagName !== 'SCRIPT');
+const activePopups = EVENT_POPUPS
+    .filter(popup => new Date() < popup.end)
+    .map(popup => document.getElementById(popup.id))
+    .filter(Boolean);
 
-    racePopup.classList.add('open');
+if (activePopups.length) {
+    const pageContent = Array.from(document.body.children).filter(el => !el.classList.contains('event-popup-overlay') && el.tagName !== 'SCRIPT');
+
+    function showPopup(index) {
+        const popup = activePopups[index];
+
+        if (!popup) {
+            document.body.style.overflow = '';
+            pageContent.forEach(el => { el.inert = false; });
+            return;
+        }
+
+        const closeBtn = popup.querySelector('.event-popup-close');
+        popup.classList.add('open');
+        closeBtn.focus();
+        closeBtn.addEventListener('click', () => {
+            popup.classList.remove('open');
+            showPopup(index + 1);
+        }, { once: true });
+    }
+
     document.body.style.overflow = 'hidden';
     pageContent.forEach(el => { el.inert = true; });
-    racePopupClose.focus();
-
-    racePopupClose.addEventListener('click', () => {
-        racePopup.classList.remove('open');
-        document.body.style.overflow = '';
-        pageContent.forEach(el => { el.inert = false; });
-    });
+    showPopup(0);
 }
