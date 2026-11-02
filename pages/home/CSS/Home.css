@@ -646,24 +646,24 @@ body {
     .sponsor-photo-card:nth-child(2) img { min-height: 276px; }
 }
 
-/* ── AMAZING RACE POPUP ─────────────────────────────── */
-.race-popup-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; }
-.race-popup-overlay.open { display: flex; animation: racePopupFade 0.2s ease; }
-.race-popup { display: grid; grid-template-columns: 400px 1fr; width: 100%; max-width: 780px; max-height: 100%; overflow-y: auto; position: relative; background: var(--black); color: var(--white); }
-.race-popup-poster { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
-.race-popup-close { position: absolute; top: 0; right: 0; width: 44px; height: 44px; border: none; background: var(--black); color: var(--white); cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
-.race-popup-close:hover { color: var(--gold); }
-.race-popup-close:focus-visible { outline: 2px solid var(--gold); outline-offset: -4px; }
-.race-popup-body { padding: 44px 32px 32px; display: flex; flex-direction: column; justify-content: center; }
-.race-popup-body h2 { font-size: 1.8rem; font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; color: var(--gold); margin-bottom: 16px; }
-.race-popup-body p { font-size: 1rem; line-height: 1.5; margin-bottom: 12px; }
-.race-popup-body .race-popup-warning { font-weight: 800; margin-bottom: 20px; }
-.race-popup-btn { display: block; padding: 14px; background: var(--gold); color: var(--black); font-size: 1rem; font-weight: 800; text-align: center; text-decoration: none; }
-.race-popup-btn:hover { background: var(--white); }
-@keyframes racePopupFade { from { opacity: 0; } }
+/* ── EVENT POPUPS ───────────────────────────────────── */
+.event-popup-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; }
+.event-popup-overlay.open { display: flex; animation: eventPopupFade 0.2s ease; }
+.event-popup { display: grid; grid-template-columns: 400px 1fr; width: 100%; max-width: 780px; max-height: 100%; overflow-y: auto; position: relative; background: var(--black); color: var(--white); }
+.event-popup-poster { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.event-popup-close { position: absolute; top: 0; right: 0; width: 44px; height: 44px; border: none; background: var(--black); color: var(--white); cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
+.event-popup-close:hover { color: var(--gold); }
+.event-popup-close:focus-visible { outline: 2px solid var(--gold); outline-offset: -4px; }
+.event-popup-body { padding: 44px 32px 32px; display: flex; flex-direction: column; justify-content: center; }
+.event-popup-body h2 { font-size: 1.8rem; font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; color: var(--gold); margin-bottom: 16px; }
+.event-popup-body p { font-size: 1rem; line-height: 1.5; margin-bottom: 12px; }
+.event-popup-body .event-popup-warning { font-weight: 800; margin-bottom: 20px; }
+.event-popup-btn { display: block; padding: 14px; background: var(--gold); color: var(--black); font-size: 1rem; font-weight: 800; text-align: center; text-decoration: none; }
+.event-popup-btn:hover { background: var(--white); }
+@keyframes eventPopupFade { from { opacity: 0; } }
 @media (max-width: 768px) {
-    .race-popup { grid-template-columns: 1fr; max-width: 440px; }
-    .race-popup-poster { height: auto; max-height: 44vh; }
-    .race-popup-body { padding: 24px 20px; }
-    .race-popup-body h2 { font-size: 1.5rem; margin-bottom: 12px; }
+    .event-popup { grid-template-columns: 1fr; max-width: 440px; }
+    .event-popup-poster { height: auto; max-height: 44vh; }
+    .event-popup-body { padding: 24px 20px; }
+    .event-popup-body h2 { font-size: 1.5rem; margin-bottom: 12px; }
 }
