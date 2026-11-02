@@ -92,7 +92,7 @@ if (newsletterForm) {
 // ── EVENT POPUPS ─────────────────────────────────────
 // Each shows on every load through its last day, one after another. Only the X closes them.
 const EVENT_POPUPS = [
-    { id: 'racePopup',   end: new Date(2026, 10, 16, 0, 0, 0) }, // Amazing Race, through Nov 15
+    { id: 'racePopup',   end: new Date(2026, 10, 21, 0, 0, 0) }, // Amazing Race, through Nov 20
     { id: 'bottlePopup', end: new Date(2026, 10, 17, 0, 0, 0) }, // Bottle Drive, through Nov 16
 ];
 
