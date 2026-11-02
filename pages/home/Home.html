@@ -251,19 +251,34 @@
     <p class="footer-text">© 2026 <span>GHSA UCalgary Chapter</span>. All Rights Reserved.</p>
 </footer>
 
-<!-- ── AMAZING RACE POPUP ─────────────────────────── -->
-<div class="race-popup-overlay" id="racePopup" role="dialog" aria-modal="true" aria-labelledby="racePopupTitle">
-    <div class="race-popup">
-        <button type="button" class="race-popup-close" id="racePopupClose" aria-label="Close">
+<!-- ── EVENT POPUPS ───────────────────────────────── -->
+<div class="event-popup-overlay" id="racePopup" role="dialog" aria-modal="true" aria-labelledby="racePopupTitle">
+    <div class="event-popup">
+        <button type="button" class="event-popup-close" aria-label="Close">
             <i class="fa-solid fa-xmark"></i>
         </button>
-        <img class="race-popup-poster" src="/pages/home/assets/amazing-race-popup.jpg" alt="GHSA Amazing Race poster, $1000 prize pool">
-        <div class="race-popup-body">
+        <img class="event-popup-poster" src="/pages/home/assets/amazing-event-popup.jpg" alt="GHSA Amazing Race poster, $1000 prize pool">
+        <div class="event-popup-body">
             <h2 id="racePopupTitle">Sunday, Nov 15 at 5pm</h2>
             <p>Teams solve clues to find each station, then beat the challenge there to get to the next one. No team? Sign up solo and we'll put you on one.</p>
             <p>$500 for first, $300 for second, $200 for third.</p>
-            <p class="race-popup-warning">No RSVP, no entry.</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd2VMpkj5L7UuqqzGudiokma0OaRd8KsE3jVACqLlmxvFQqRg/viewform" target="_blank" rel="noopener" class="race-popup-btn">Sign up</a>
+            <p class="event-popup-warning">No RSVP, no entry.</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd2VMpkj5L7UuqqzGudiokma0OaRd8KsE3jVACqLlmxvFQqRg/viewform" target="_blank" rel="noopener" class="event-popup-btn">Sign up</a>
+        </div>
+    </div>
+</div>
+
+<div class="event-popup-overlay" id="bottlePopup" role="dialog" aria-modal="true" aria-labelledby="bottlePopupTitle">
+    <div class="event-popup">
+        <button type="button" class="event-popup-close" aria-label="Close">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <img class="event-popup-poster" src="/pages/home/assets/bottle-drive-popup.jpg" alt="GHSA Bottle Drive flyer">
+        <div class="event-popup-body">
+            <h2 id="bottlePopupTitle">Bottle Drive, Nov 9 to 16</h2>
+            <p>Got refundable bottles and cans? Donate them to help fund GHSA student initiatives, events, and support programs at UCalgary.</p>
+            <p>Book a pickup online. Every donation gets a receipt.</p>
+            <a href="https://forms.gle/Lo6WYyxy42CpRh6i9" target="_blank" rel="noopener" class="event-popup-btn">Schedule a pickup</a>
         </div>
     </div>
 </div>
