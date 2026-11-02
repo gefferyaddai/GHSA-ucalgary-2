@@ -90,11 +90,11 @@ if (newsletterForm) {
 }
 
 // ── AMAZING RACE POPUP ───────────────────────────────
-// Shows on every load until the event starts. Only the X closes it.
-const RACE_START = new Date(2026, 10, 15, 17, 0, 0);
+// Shows on every load through the day of the race (Nov 15). Only the X closes it.
+const RACE_POPUP_END = new Date(2026, 10, 16, 0, 0, 0);
 const racePopup  = document.getElementById('racePopup');
 
-if (racePopup && new Date() < RACE_START) {
+if (racePopup && new Date() < RACE_POPUP_END) {
     const racePopupClose = document.getElementById('racePopupClose');
     const pageContent    = Array.from(document.body.children).filter(el => el !== racePopup && el.tagName !== 'SCRIPT');
 
